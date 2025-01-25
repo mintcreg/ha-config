@@ -16,3 +16,13 @@ The navigation bar will display when using a mobile browser
 ![Slideshow](/images/screenshots/dashboard/calendar/calendar.png)
 
 </details>
+
+<details>
+  <summary>Mobile</summary>
+  
+<br>
+
+
+<img src="/images/screenshots/dashboard/calendar/calendar-mobile.jpg" alt="Slideshow" width="350" />
+
+</details>
