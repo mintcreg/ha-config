@@ -204,7 +204,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/rpi.png" alt="drawing" width="120" />
-        <h3>RPI 4 (8gb)</h3>
+        <p>RPI 4 (8gb)</p>
       </td>
       <td>
         <p>Directly running HASSIO OS</p>
@@ -214,7 +214,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/RT-AC86U.jpg" alt="drawing" width="120" />
-        <h3>ASUS RT-AC86U</h3>
+        <p>ASUS RT-AC86U</p>
       </td>
       <td>
         <p>Router</p>
@@ -224,7 +224,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/SONOFF-Zigbee-plus-e.jpg" alt="drawing" width="120" />
-        <h3>SONOFF-Zigbee Plus-E</h3>
+        <p>SONOFF-Zigbee Plus-E</p>
       </td>
       <td>
         <p>Zigbee co-ordinator</p>
@@ -234,7 +234,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/google-mini.jpg" alt="drawing" width="120" />
-        <h3>Google Home Mini</h3>
+        <p>Google Home Mini</p>
       </td>
       <td>
         <p>Voice Assistant</p>
@@ -257,7 +257,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/ikea-vallhorn-motion-sensor.jpeg" alt="drawing" width="120" />
-        <h3>Ikea Vallhorn Motion Sensor</h3>
+        <p>Ikea Vallhorn Motion Sensor</p>
       </td>
       <td>
         <p>Capture motion</p>
@@ -267,7 +267,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/sonoff-snzb-02.jpeg" alt="drawing" width="120" />
-        <h3>Sonoff SNZB-02</h3>
+        <p>Sonoff SNZB-02</p>
       </td>
       <td>
         <p>Temperature Sensor</p>
@@ -277,7 +277,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/sonoff-snzb-04.jpeg" alt="drawing" width="120" />
-        <h3>Sonoff SNZB-02</h3>
+        <p>Sonoff SNZB-02</p>
       </td>
       <td>
         <p>Open/close sensor</p>
@@ -287,7 +287,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-TT001ZAV20.png" alt="drawing" width="120" />
-        <h3>TUYA - TS0201</h3>
+        <p>TUYA - TS0201</p>
       </td>
       <td>
         <p>Fridge temperature sensor</p>
@@ -297,7 +297,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-TS0011.jpeg" alt="drawing" width="120" />
-        <h3>Tuya - TS0011</h3>
+        <p>Tuya - TS0011</p>
       </td>
       <td>
         <p>Light switch</p>
@@ -307,7 +307,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-BSD29_1.jpeg" alt="drawing" width="120" />
-        <h3>Tuya BSD29_1</h3>
+        <p>Tuya BSD29_1</p>
       </td>
       <td>
         <p>Switch / Power meter</p>
@@ -317,7 +317,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-WSD500A.jpeg" alt="drawing" width="120" />
-        <h3>Tuya - WSD500A</h3>
+        <p>Tuya - WSD500A</p>
       </td>
       <td>
         <p>Temperature Sensor</p>
@@ -327,7 +327,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-ZG-227Z.png" alt="drawing" width="120" />
-        <h3>Tuya - ZG-227Z</h3>
+        <p>Tuya - ZG-227Z</p>
       </td>
       <td>
         <p>Temperature Sensor</p>
@@ -337,7 +337,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/tuya-ZY-M100-24GV3.png" alt="drawing" width="120" />
-        <h3>Tuya - ZY-M100-24GV3</h3>
+        <p>Tuya - ZY-M100-24GV3</p>
       </td>
       <td>
         <p>Presence sensor</p>
