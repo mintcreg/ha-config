@@ -90,22 +90,22 @@ sections:
             cards:
               - type: custom:mushroom-template-card
                 secondary: >
-                  {{ states ('sensor.dvla_ng14gjy_taxstatus') }} 
+                  {{ states ('sensor.dvla_REGISTRATION_PLATE_taxstatus') }} 
 
                   Expires: {{ states
-                  ('sensor.formatted_tax_expiry_date_ng14gjy') }}
+                  ('sensor.formatted_tax_expiry_date_REGISTRATION_PLATE') }}
                 icon: mdi:car
                 entity: binary_sensor.tessy_user_present_2
                 primary: Tax Status
                 multiline_secondary: true
                 icon_color: |-
-                  {% if states('sensor.dvla_ng14gjy_taxstatus') == 'Taxed' %}
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_taxstatus') == 'Taxed' %}
                       green
                     {% else %}
                       red
                     {% endif %}
                 badge_icon: |-
-                  {% if states('sensor.dvla_ng14gjy_taxstatus') == 'Taxed' %}
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_taxstatus') == 'Taxed' %}
                       mdi:check
                     {% else %}
                       mdi:alert
@@ -127,22 +127,22 @@ sections:
                        }
               - type: custom:mushroom-template-card
                 secondary: >
-                  {{ states ('sensor.dvla_ng14gjy_motstatus') }} 
+                  {{ states ('sensor.dvla_REGISTRATION_PLATE_motstatus') }} 
 
                   Expires: {{ states
-                  ('sensor.formatted_mot_expiry_date_ng14gjy') }}
+                  ('sensor.formatted_mot_expiry_date_REGISTRATION_PLATE') }}
                 icon: mdi:car
                 entity: binary_sensor.tessy_user_present_2
                 primary: MOT Status
                 multiline_secondary: true
                 icon_color: |-
-                  {% if states('sensor.dvla_ng14gjy_motstatus') == 'Valid' %}
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_motstatus') == 'Valid' %}
                       green
                     {% else %}
                       red
                     {% endif %}
                 badge_icon: |-
-                  {% if states('sensor.dvla_ng14gjy_motstatus') == 'Valid' %}
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_motstatus') == 'Valid' %}
                       mdi:check
                     {% else %}
                       mdi:alert
