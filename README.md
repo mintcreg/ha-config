@@ -266,7 +266,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/sonoff-snzb-02.jpeg" alt="drawing" width="120" />
       </td>
       <td>
-        Sonoff SNZB-02
+        <a href="https://sonoff.tech/product/gateway-and-sensors/snzb-02/">Sonoff SNZB-02</a>
       </td>
       <td>
         Temperature Sensor
@@ -290,7 +290,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-TT001ZAV20.png" alt="drawing" width="120" />
       </td>
       <td>
-        TUYA - TS0201
+        <a href="https://www.aliexpress.com/item/1005006097911972.html?spm=a2g0o.productlist.main.67.6e4bDRxFDRxFaq&algo_pvid=c9da9377-4fe7-4899-99c3-f3c8c24115bd&utparam-url=scene%3Asearch%7Cquery_from%3A">TUYA - TS0201</a>
       </td>
       <td>
         Fridge temperature sensor
@@ -302,7 +302,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-TS0011.jpeg" alt="drawing" width="120" />
       </td>
       <td>
-        Tuya - TS0011
+        <a href="https://www.aliexpress.com/item/1005006243515442.html?spm=a2g0o.productlist.main.5.1bbf1ce0SbZ0gq&algo_pvid=c8e55973-7666-4687-b9dc-3fac5df54fb0&utparam-url=scene%3Asearch%7Cquery_from%3A">Tuya - TS0011</a>
       </td>
       <td>
         Light switch
@@ -314,7 +314,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-BSD29_1.jpeg" alt="drawing" width="120" />
       </td>
       <td>
-        Tuya BSD29_1
+        <a href="https://www.aliexpress.com/item/1005006346571151.html?spm=a2g0o.productlist.main.11.cf6d6630pGXRKZ&algo_pvid=63bcba82-75ec-4dee-aab5-8750b9cfa96f&utparam-url=scene%3Asearch%7Cquery_from%3A">Tuya BSD29_1</a>
       </td>
       <td>
         Switch / Power meter
@@ -326,7 +326,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-WSD500A.jpeg" alt="drawing" width="120" />
       </td>
       <td>
-        Tuya - WSD500A
+        <a href="https://www.aliexpress.com/item/1005008248042691.html?spm=a2g0o.productlist.main.1.4e971b8bMyyr9y&algo_pvid=2eea70ac-dd3d-49e5-bfcc-d27824738dd7&utparam-url=scene%3Asearch%7Cquery_from%3A">Tuya - WSD500A</a>
       </td>
       <td>
         Temperature Sensor
@@ -338,7 +338,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-ZG-227Z.png" alt="drawing" width="120" />
       </td>
       <td>
-        Tuya - ZG-227Z
+        <a href="https://www.aliexpress.com/item/1005007645898497.html?spm=a2g0o.productlist.main.11.6e4bDRxFDRxFaq&algo_pvid=c9da9377-4fe7-4899-99c3-f3c8c24115bd&algo_exp_id=c9da9377-4fe7-4899-99c3-f3c8c24115bd-5&pdp_npi=4%40dis%21GBP%213.47%211.80%21%21%2130.32%2115.74%21%40211b813f17378355900048747e9cd3%2112000041638489031%21sea%21UK%210%21ABX&curPageLogUid=pOazckk2dyUn&utparam-url=scene%3Asearch%7Cquery_from%3A">Tuya - ZG-227Z</a>
       </td>
       <td>
         Temperature Sensor
@@ -350,7 +350,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/tuya-ZY-M100-24GV3.png" alt="drawing" width="120" />
       </td>
       <td>
-        Tuya - ZY-M100-24GV3
+        <a href="https://www.aliexpress.com/item/1005005543432442.html?spm=a2g0o.productlist.main.3.f717IOqMIOqMHd&algo_pvid=5216b319-d187-4277-871d-4646b1ba2bf3&utparam-url=scene%3Asearch%7Cquery_from%3A">Tuya - ZY-M100-24GV3</a>
       </td>
       <td>
         Presence sensor
