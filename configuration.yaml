@@ -1,0 +1,89 @@
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+websocket_api:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Shell command to turn off Unraid Server (key pair saved to unraid for passwordless access)
+shell_command:
+  unraid_powerdown: "ssh -i /config/ssh_keys/unraid_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@SERVERIP 'powerdown'"
+
+## WOL for the below switch
+wake_on_lan:
+## WOL Switch Below (PC)
+switch:
+  - platform: wake_on_lan
+    mac: MACADDRESS
+    name: "Craig-PC"
+    host: HOSTIP
+    turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: Craig-PC
+## Switch for server with template for status (updated ever 30 seconds default)
+  - platform: template
+    switches:
+      server:
+        value_template: "{{ is_state('binary_sensor.SERVERIP', 'on') }}"
+        turn_on:
+          service: wake_on_lan.send_magic_packet
+          data:
+            mac: "MACADDRESS"  # your server’s MAC
+        turn_off:
+          service: shell_command.unraid_powerdown
+        friendly_name: "Home Server"
+
+
+# Waste collection schedule (manual as local council do not support)      
+waste_collection_schedule:
+  sources:
+    - name: static
+      args:
+        type: Green Bin
+        frequency: WEEKLY
+        interval: 2
+        start: '2025-01-07'
+        until: '2025-12-23'
+        excludes: # Add exception for the recurrence
+          - '2025-05-27'
+        dates: # Manually add dates that are not part of the recurrence
+          - '2025-05-28'
+      customize:
+        - type: gbin
+          alias: gbin
+          picture: https://my.domain.lan:8123/local/img/icon_trash_grey.png
+      calendar_title: Green Bin
+      # Blue Bin collection schedule (make sure to update this yearly in December)  
+    - name: static
+      args:
+        type: Blue Bin
+        frequency: WEEKLY
+        interval: 2
+        start: '2025-01-14'
+        until: '2025-12-16'
+        excludes: # Add exception for the recurrence
+          - '2025-04-22'
+          - '2025-05-06'
+          - '2025-08-26'
+        dates: # Manually add dates that are not part of the recurrence
+          - '2025-04-23'
+          - '2025-05-07'
+          - '2025-08-27'
+      customize:
+        - type: bbin
+          alias: bbin 
+      calendar_title: Blue Bin    
+      
