@@ -206,7 +206,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
       <td>
         <img src="images/devices/rpi.png" alt="drawing" width="120" />
       </td>
-      <td>RPI 4 (8gb)</td>
+      <td><a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">RPI 4 (8gb)</a></td>
       <td>Directly running HASSIO OS</td>
       <td>x1</td>
     </tr>
@@ -214,7 +214,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
       <td>
         <img src="images/devices/RT-AC86U.jpg" alt="drawing" width="120" />
       </td>
-      <td>ASUS RT-AC86U</td>
+      <td><a href="https://www.asus.com/uk/networking-iot-servers/wifi-routers/asus-wifi-routers/rt-ac86u/">ASUS RT-AC86U</a></td>
       <td>Router</td>
       <td>x1</td>
     </tr>
@@ -222,7 +222,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
       <td>
         <img src="images/devices/SONOFF-Zigbee-plus-e.jpg" alt="drawing" width="120" />
       </td>
-      <td>SONOFF-Zigbee Plus-E</td>
+      <td><a href="https://www.amazon.co.uk/SONOFF-Universal-ZBDongle-Gateway-Assistant/dp/B0B6P22YJC">SONOFF-Zigbee Plus-E</a></td>
       <td>Zigbee co-ordinator</td>
       <td>x1</td>
     </tr>
@@ -230,7 +230,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
       <td>
         <img src="images/devices/google-mini.jpg" alt="drawing" width="120" />
       </td>
-      <td>Google Home Mini</td>
+      <td><a href="https://store.google.com/product/google_nest_mini?hl=en-GB&pli=1">Google Home Mini</a></td>
       <td>Voice Assistant</td>
       <td>x2</td>
     </tr>
@@ -254,7 +254,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
         <img src="images/devices/ikea-vallhorn-motion-sensor.jpeg" alt="drawing" width="120" />
       </td>
       <td>
-        Ikea Vallhorn Motion Sensor
+        <a href="https://www.ikea.com/gb/en/p/vallhorn-wireless-motion-sensor-smart-white-90504341/">Ikea Vallhorn Motion Sensor</a>
       </td>
       <td>
         Capture motion
