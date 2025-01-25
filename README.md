@@ -63,6 +63,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
 - [dlna_dmr](https://www.home-assistant.io/integrations/dlna_dmr/)
 - [mqtt](https://www.home-assistant.io/integrations/mqtt/)
 - [zha](https://www.home-assistant.io/integrations/zha/)
+- [DVLA-Vehicle-Enquiry-Service](https://github.com/jampez77/DVLA-Vehicle-Enquiry-Service/)
 - [local_todo](https://www.home-assistant.io/integrations/local_todo/)
 - [template](https://www.home-assistant.io/integrations/template/)
 - [shopping_list](https://www.home-assistant.io/integrations/shopping_list/)
