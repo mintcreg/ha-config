@@ -200,19 +200,19 @@
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
+      <td>x1</td>
       <td>
-        <img src="images/devices/nuc-j3455.jpg" alt="drawing" width="200" />
-        <h3>Intel NUC J3455</h3>
+        <img src="images/devices/rpi.png" alt="drawing" width="200" />
+        <h3>RPI 4 (8gb)</h3>
       </td>
       <td>
-        <p>Ubuntu server running Docker</p>
+        <p>Directly running HASSIO OS</p>
       </td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>x2</td>
       <td>
-        <img src="images/devices/google-home.jpg" alt="drawing" width="200" />
+        <img src="images/devices/google-mini.jpg" alt="drawing" width="200" />
         <h3>Google Home Mini</h3>
       </td>
       <td>
@@ -220,63 +220,53 @@
       </td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>x4</td>
       <td>
-        <img src="images/devices/echo-show.jpg" alt="drawing" width="200" />
-        <h3>Echo show</h3>
+        <img src="images/devices/ikea-vallhorn-motion-sensor.jpeg" alt="drawing" width="200" />
+        <h3>Ikea Vallhorn Motion Sensor</h3>
       </td>
       <td>
-        <p>Voice Assistant</p>
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>
-        <img src="images/devices/led-controller.jpg" alt="drawing" width="200" />
-        <h3>LED strip controller</h3>
-      </td>
-      <td>
-        <p>Lights</p>
+        <p>Capture motion</p>
       </td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>x2</td>
       <td>
-        <img src="images/devices/mi-box-s.jpg" alt="drawing" width="200" />
-        <h3>Mi Box S</h3>
+        <img src="images/devices/sonoff-snzb-02.jpeg" alt="drawing" width="200" />
+        <h3>Sonoff SNZB-02</h3>
       </td>
       <td>
-        <p>TV</p>
-      </td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        <img src="images/devices/mi-wifi-3.jpg" alt="drawing" width="200" />
-        <h3>Mi WiFi 3</h3>
-      </td>
-      <td>
-        <p>WiFi router</p>
+        <p>Temperature Sensor</p>
       </td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>x3</td>
       <td>
-        <img src="images/devices/rmmini.jpg" alt="drawing" width="200" />
-        <h3>RM mini</h3>
+        <img src="images/devices/sonoff-snzb-04.jpeg" alt="drawing" width="200" />
+        <h3>Sonoff SNZB-02</h3>
       </td>
       <td>
-        <p>IR Blaster</p>
+        <p>Open/close sensor</p>
       </td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>x1</td>
       <td>
-        <img src="images/devices/pzem.jpg" alt="drawing" width="200" />
-        <h3>PZEM</h3>
+        <img src="images/devices/tuya-TT001ZAV20.png" alt="drawing" width="200" />
+        <h3>TUYA - TS0201</h3>
       </td>
       <td>
-        <p>Home power meter</p>
+        <p>Fridge temperature sensor</p>
+      </td>
+    </tr>
+    <tr>
+      <td>x9</td>
+      <td>
+        <img src="images/devices/tuya-TS0011.jpeg" alt="drawing" width="200" />
+        <h3>Tuya - TS0011</h3>
+      </td>
+      <td>
+        <p>Light switch</p>
       </td>
     </tr>
     <tr>
