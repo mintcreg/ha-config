@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  This is a project focused on sharing ideas and solutions for the use of <a href="https://www.home-assistant.io/">Home Assistant</a> and home automation in general.
+  Below is my HomeAssistant config, this is more for my own documentation purposes but if its usefull to you please give it a star! 😇
 </p>
 
 <p align="center">
@@ -343,9 +343,6 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
 ## Automations
 
 ### Coming soon
-
-## Secrets
-You can find a complete list of secrets used on this project [here](secrets.example.yaml).
 
 
 ## ToDo list
