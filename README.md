@@ -6,17 +6,16 @@
 </p>
 
 <p align="center">
-  <img alt="Stars" src="https://img.shields.io/github/stars/JoaquinBeceiro/Home-Assistant-Config.svg?style=plasticr"/>
   <img alt="Last Commit" src="https://img.shields.io/github/last-commit/JoaquinBeceiro/Home-Assistant-Config.svg?style=plasticr"/>
-  <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/JoaquinBeceiro/home-assistant-config"/>
-  <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2021"/>
+  <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/mintcreg/ha-config"/>
+  <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2025"/>
 </p>
 
 <p align="center">
-  <img alt="HA Version" src="https://img.shields.io/badge/HA--Version-2021.3.2-9cf"/>
-  <img alt="Mosquitto Version" src="https://img.shields.io/badge/Mosquitto--Version-1.6.9-9cf"/>
-  <img alt="VSCode Version" src="https://img.shields.io/badge/VSCode--Version-3.0.2-9cf"/>
-  <img alt="MariaDB Version" src="https://img.shields.io/badge/MariaDB--Version-10.4-9cf"/>
+  <img alt="HA Version" src="https://img.shields.io/badge/HA--Version-2025.1.2-9cf"/>
+  <img alt="Mosquitto Version" src="https://img.shields.io/badge/Mosquitto--Version-6.5.0-9cf"/>
+  <img alt="MariaDB Version" src="https://img.shields.io/badge/MariaDB--Version-2.7.2-9cf"/>
+  <img alt="MariaDB Version" src="https://img.shields.io/badge/Zigbee2MQTT--Version-2.0.02-9cf"/>
 </p>
 
 ## Table of Contents
@@ -43,7 +42,6 @@
 
 - [HomeAssistant](https://www.home-assistant.io/) MQTT server to communicate with devices
 - [MariaDB](https://mariadb.org/) database to save all information
-- [VSCode](https://code.visualstudio.com/) server to code in browser
 
 ## Integrations
 
