@@ -219,6 +219,16 @@
     </tr>
     <tr>
       <td>
+        <img src="images/devices/SONOFF-Zigbee-plus-e.jpg" alt="drawing" width="120" />
+        <h3>SONOFF-Zigbee Plus-E</h3>
+      </td>
+      <td>
+        <p>Zigbee co-ordinator</p>
+      </td>
+      <td>x1</td>
+    </tr>
+    <tr>
+      <td>
         <img src="images/devices/google-mini.jpg" alt="drawing" width="120" />
         <h3>Google Home Mini</h3>
       </td>
