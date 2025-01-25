@@ -1,0 +1,332 @@
+title: calendar
+path: calendar
+subview: true
+type: sections
+sections:
+  - type: grid
+    cards:
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:cake-variant-outline
+        name: Birthdays
+        entity: person.
+        card_mod:
+          style: |
+            .separator-container {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: 12px;
+                }
+                .separator-container div:last-child {
+                    display: none;
+                }
+      - type: markdown
+        content: >
+          <center> <h2> 🎉 Birthday Countdown 🎉 </h2> </center>
+
+
+
+
+          **Next Birthday:**  
+
+
+          *{{ state_attr('calendar.birthdays', 'message') }}* on *{{
+          states('sensor.formatted_next_birthday_date') }}*
+
+          <br>
+
+          {%- set messages = [
+            "Reminder: Don't forget to bring the party hat! 🎉",
+            "Reminder: Time to celebrate another trip around the sun! ☀️",
+            "Reminder: Cake calories don't count on birthdays! 🍰",
+            "Reminder: Get ready for birthday surprises and lots of smiles! 😄",
+            "Reminder: Today's mission: Make someone's birthday extra special! 🚀",
+            "Reminder: Birthdays are for joy, laughter, and cake! 🎂",
+            "Reminder: It's birthday countdown time! 🎈",
+            "Reminder: Prepare for birthday awesomeness! 🎁",
+            "Reminder: Sending virtual confetti for the upcoming celebration! 🎊",
+            "Reminder: Guess what day it is? Birthday countdown initiated! 🎉"] -%}
+          {{ messages | random }}
+      - type: custom:atomic-calendar-revive
+        entities:
+          - entity: calendar.birthdays
+            name: Birthdays
+          - entity: calendar.holidays_in_united_kingdom
+            name: Holidays in united kingdom
+        enableModeChange: true
+        maxDaysToShow: 7
+        maxEventCount: 0
+        linkTarget: _blank
+        defaultMode: Calendar
+        showDate: false
+        sortByStartTime: false
+        hideFinishedEvents: true
+        showRelativeTime: false
+        showLoader: true
+        showWeekDay: false
+        disableEventLink: false
+        showFullDayProgress: false
+        untilText: "1"
+        calShowDescription: true
+        showLastCalendarWeek: true
+        disableCalLink: false
+        disableCalLocationLink: false
+        disableCalEventLink: false
+        refreshInterval: 60
+        firstDayOfWeek: 1
+        dimFinishedEvents: true
+      - type: custom:mushroom-light-card
+        entity: light.craig_s_socket_s2
+        name: Add Calendar Entry
+        layout: horizontal
+        tap_action:
+          action: navigate
+          navigation_path: /calendar
+        hold_action:
+          action: navigate
+          navigation_path: /calendar
+        double_tap_action:
+          action: navigate
+          navigation_path: /calendar
+        primary_info: name
+        secondary_info: none
+        icon_color: blue
+        icon: mdi:home-automation
+        fill_container: true
+        icon_type: icon
+        use_light_color: false
+        show_color_control: false
+        card_mod:
+          style: |
+            ha-card {
+                   align-items: center;
+                 }
+      - type: custom:button-card
+        color_type: blank-card
+        card_mod:
+          style: |
+            ha-card {
+                   margin-bottom: 5em;
+            }
+      - type: conditional
+        conditions:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 1023px)"
+        card:
+          type: custom:mushroom-chips-card
+          chips:
+            - type: back
+            - type: template
+              icon: mdi:lightbulb
+              content: >-
+                {{ expand(states.light) | selectattr( 'state', 'eq', 'on') |
+                list | count }}
+              entity: light.all_lights
+              icon_color: yellow
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    theme: noctis
+                    title: Active Lights
+                    content:
+                      type: vertical-stack
+                      cards:
+                        - type: custom:auto-entities
+                          card:
+                            square: false
+                            type: grid
+                            columns: 1
+                          card_param: cards
+                          filter:
+                            exclude:
+                              - state: "off"
+                              - entity_id: light.all_lights
+                              - entity_id: light.downstairs_main_lights
+                              - entity_id: light.upstairs_main_lights
+                              - entity_id: light.sitting_room_lamps
+                              - entity_id: light.all_main_lights
+                            include:
+                              - domain: light
+                                options:
+                                  type: custom:bubble-card
+                                  icon: mdi:lightbulb-on
+                                  card_type: button
+                                  button_type: switch
+                                  entities:
+                                    - sensor.0x00124b002502bdf5_battery
+                          sort:
+                            method: friendly_name
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.front_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.front_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: spacer
+            - type: entity
+              entity: person.craig_archbold
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/0
+              hold_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/0
+              icon: mdi:home
+              content_info: none
+            - type: spacer
+            - type: entity
+              entity: person.craig_archbold
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              hold_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              icon: mdi:calendar
+              content_info: none
+              double_tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.green_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:trash-can-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.blue_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:recycle
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.birthdays
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:cake-variant-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.back_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.back_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: menu
+          alignment: justify
+          card_mod:
+            style:
+              card_mod: null
+              style: |
+                ha-card {
+                  --chip-background: none;
+                  z-index: 2;
+                  position: fixed;
+                  bottom: 0;
+                  padding: 10px;
+                  background: #2C3E50 !important;
+                  margin: 0 !important;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: calc(100%);
+                }
+              mushroom-conditional-chip:nth-child(3):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(9):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(6):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-green), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(7):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-blue), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
