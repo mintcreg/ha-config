@@ -1,0 +1,510 @@
+alias: MOT & Tax Reminder
+description: ""
+triggers:
+  - hours: /12
+    trigger: time_pattern
+  - alias: dev
+    trigger: time
+    at: "20:14:00"
+    enabled: false
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 7 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 7 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 7 Day Check (Craig) (MOT) - Notification sent
+            action: logbook.log
+        alias: 7 Day Check (Craig) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 7 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 7 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 7 Day Check (Craig) (TAX) - Notification sent
+            action: logbook.log
+        alias: 7 Day Check (Craig) (TAX)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 15 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 15 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 15 Day Check (Craig) (MOT) - Notification sent
+            action: logbook.log
+        alias: 15 Day Check (Craig) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 15 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 15 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 15 Day Check (Craig) (TAX) - Notification sent
+            action: logbook.log
+        alias: 15 Day Check (Craig) (TAX)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 30 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 30 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 30 Day Check (Craig) (MOT) - Notification sent
+            action: logbook.log
+        alias: 30 Day Check (Craig) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 30 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Craig
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 30 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/craig
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/craig
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 30 Day Check (Craig) (TAX) - Notification sent
+            action: logbook.log
+        alias: 30 Day Check (Craig) (TAX)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 30 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 30 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 30 Day Check (Angela) (MOT) - Notification sent
+            action: logbook.log
+        alias: 30 Day Check (Angela) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 15 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 15 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 15 Day Check (Angela) (MOT) - Notification sent
+            action: logbook.log
+        alias: 15 Day Check (Angela) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_mot_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 7 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your MOT is due in 7 days on {{
+                states('sensor.formatted_mot_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - MOT Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 7 Day Check (Angela) (MOT) - Notification sent
+            action: logbook.log
+        alias: 7 Day Check (Angela) (MOT)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 30 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 30 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 30 Day Check (Angela) (TAX) - Notification sent
+            action: logbook.log
+        alias: 30 Day Check (Angela) (TAX)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 15 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 15 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 15 Day Check (Angela) (TAX) - Notification sent
+            action: logbook.log
+        alias: 15 Day Check (Angela) (TAX)
+      - conditions:
+          - condition: template
+            value_template: >-
+              {% set expiry_date =
+              states('sensor.formatted_tax_expiry_date_REGPLATE') %} {% if
+              expiry_date %}
+                {% set expiry = strptime(expiry_date, "%d/%m/%Y").replace(tzinfo=None) %}
+                {% set today = now().replace(tzinfo=None) %}
+                {{ (expiry - today).days <= 7 and (expiry - today).days >= 0 }}
+              {% else %}
+                false
+              {% endif %}
+        sequence:
+          - alias: Notify Angela
+            action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:car
+              notify_message: >-
+                Your TAX is due in 7 days on {{
+                states('sensor.formatted_tax_expiry_date_REGPLATE') }}
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/angela
+              data_sticky: true
+              notify_title: MazCasa - TAX Reminder
+              data_actions:
+                - action: URI
+                  title: View
+                  uri: /dashboard-mobile/angela
+                - action: cancel
+                  title: Close
+          - data:
+              name: MOT & Tax Reminder
+              message: 7 Day Check (Angela) (TAX) - Notification sent
+            action: logbook.log
+        alias: 7 Day Check (Angela) (TAX)
+    default:
+      - data:
+          name: MOT & Tax Reminder
+          message: No TAX or MOT due - no notifications sent!
+        action: logbook.log
+mode: single
