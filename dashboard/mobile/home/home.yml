@@ -1,0 +1,5141 @@
+title: Home
+type: sections
+sections:
+  - type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: conditional
+            conditions:
+              - condition: screen
+                media_query: "(min-width: 0px) and (max-width: 1023px)"
+            card:
+              type: custom:css-swipe-card
+              cardId: YourUniqueCardName
+              template: slider-horizontal
+              auto_height: false
+              height: 10rem
+              pagination: true
+              navigation: false
+              card_gap: 0.2rem
+              timer: 3
+              navigation_next: mdi:chevron-right
+              navigation_prev: mdi:chevron-left
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:clock-weather-card
+                      entity: weather.forecast_home
+                      hide_forecast_section: true
+                      forecast_rows: 3
+                      weather_icon_type: line
+                      animated_icon: true
+                      date_pattern: DDD
+                      hide_clock: true
+                      tap_action:
+                        action: fire-dom-event
+                        browser_mod:
+                          service: browser_mod.popup
+                          data:
+                            theme: noctis
+                            title: Weather Forecast
+                            content:
+                              type: vertical-stack
+                              cards:
+                                - type: weather-forecast
+                                  entity: weather.forecast_home
+                                  forecast_type: daily
+                                - type: weather-forecast
+                                  entity: weather.forecast_home
+                                  forecast_type: hourly
+                                  show_current: false
+                                - type: glance
+                                  entities:
+                                    - entity: sun.sun
+                                    - entity: sensor.sun_next_dawn
+                                    - entity: sensor.sun_next_dusk
+                              forecast_type: daily
+                      card_mod:
+                        style: |
+                          ha-card {
+                            border-radius: 6px;
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                          }
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: >-
+                        sensor.octopus_energy_gas_g4k00329061920_9323614607_current_accumulative_cost
+                      name: Today's Gas
+                      icon: mdi:fire
+                      show_entity_picture: false
+                      vertical: true
+                      tap_action:
+                        action: none
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                    - type: tile
+                      entity: >-
+                        sensor.octopus_energy_electricity_21m0113536_1580001338400_current_accumulative_cost
+                      name: Today's Electric
+                      icon: mdi:lightning-bolt
+                      vertical: true
+                      tap_action:
+                        action: none
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                  grid_options:
+                    columns: 12
+                    rows: 2
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: sensor.formatted_green_bin
+                      name: Green Bin
+                      icon: mdi:trash-can
+                      show_entity_picture: false
+                      vertical: true
+                      state_content: state
+                      color: green
+                      tap_action:
+                        action: navigate
+                        navigation_path: "#bins"
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                    - type: tile
+                      entity: sensor.formatted_blue_bin
+                      name: Blue Bin
+                      icon: mdi:recycle
+                      show_entity_picture: false
+                      vertical: true
+                      state_content: state
+                      color: primary
+                      tap_action:
+                        action: navigate
+                        navigation_path: "#bins"
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                  grid_options:
+                    columns: 12
+                    rows: 2
+              custom_css:
+                "--navigation-button-next-color": white
+                "--navigation-button-next-background-color": cornflowerblue
+                "--navigation-button-next-width": 50px
+                "--navigation-button-next-height": 50px
+                "--navigation-button-prev-color": white
+                "--navigation-button-prev-background-color": orchid
+                "--navigation-button-prev-width": 50px
+                "--navigation-button-prev-height": 50px
+                "--pagination-bullet-active-background-color": cornflowerblue
+                "--pagination-bullet-distance": 5px
+                "--pagination-margin-top": 50px
+          - type: conditional
+            conditions:
+              - condition: screen
+                media_query: "(min-width: 1024px)"
+            card:
+              type: custom:css-swipe-card
+              cardId: YourUniqueCardName
+              template: slider-horizontal
+              auto_height: true
+              pagination: true
+              navigation: false
+              card_gap: "-1rem"
+              timer: 3
+              navigation_next: mdi:chevron-right
+              navigation_prev: mdi:chevron-left
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:clock-weather-card
+                      entity: weather.forecast_home
+                      hide_forecast_section: true
+                      forecast_rows: 3
+                      weather_icon_type: line
+                      animated_icon: true
+                      date_pattern: DDD
+                      hide_clock: true
+                      tap_action:
+                        action: fire-dom-event
+                        browser_mod:
+                          service: browser_mod.popup
+                          data:
+                            theme: noctis
+                            title: Weather Forecast
+                            content:
+                              type: vertical-stack
+                              cards:
+                                - type: weather-forecast
+                                  entity: weather.forecast_home
+                                  forecast_type: daily
+                                - type: weather-forecast
+                                  entity: weather.forecast_home
+                                  forecast_type: hourly
+                                  show_current: false
+                                - type: glance
+                                  entities:
+                                    - entity: sun.sun
+                                    - entity: sensor.sun_next_dawn
+                                    - entity: sensor.sun_next_dusk
+                              forecast_type: daily
+                      card_mod:
+                        style: |
+                          ha-card {
+                            border-radius: 6px;
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                          }
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: >-
+                        sensor.octopus_energy_gas_g4k00329061920_9323614607_current_accumulative_cost
+                      name: Today's Gas
+                      icon: mdi:fire
+                      show_entity_picture: false
+                      vertical: true
+                      tap_action:
+                        action: none
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                    - type: tile
+                      entity: >-
+                        sensor.octopus_energy_electricity_21m0113536_1580001338400_current_accumulative_cost
+                      name: Today's Electric
+                      icon: mdi:lightning-bolt
+                      vertical: true
+                      tap_action:
+                        action: none
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                  grid_options:
+                    columns: 12
+                    rows: 2
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: sensor.formatted_green_bin
+                      name: Green Bin
+                      icon: mdi:trash-can
+                      show_entity_picture: false
+                      vertical: true
+                      state_content: state
+                      color: green
+                      tap_action:
+                        action: navigate
+                        navigation_path: "#bins"
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                    - type: tile
+                      entity: sensor.formatted_blue_bin
+                      name: Blue Bin
+                      icon: mdi:recycle
+                      show_entity_picture: false
+                      vertical: true
+                      state_content: state
+                      color: primary
+                      tap_action:
+                        action: navigate
+                        navigation_path: "#bins"
+                      icon_tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                  grid_options:
+                    columns: 12
+                    rows: 2
+              custom_css:
+                "--navigation-button-next-color": white
+                "--navigation-button-next-background-color": cornflowerblue
+                "--navigation-button-next-width": 50px
+                "--navigation-button-next-height": 50px
+                "--navigation-button-prev-color": white
+                "--navigation-button-prev-background-color": orchid
+                "--navigation-button-prev-width": 50px
+                "--navigation-button-prev-height": 50px
+                "--pagination-bullet-active-background-color": cornflowerblue
+                "--pagination-bullet-distance": 5px
+                "--pagination-margin-top": 50px
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: switch.tv_socket_l2
+            state: "on"
+        card:
+          type: custom:mushroom-template-card
+          primary: Dog Camera
+          secondary: Tap here to view
+          icon: mdi:cctv
+          fill_container: true
+          multiline_secondary: true
+          tap_action:
+            action: url
+            url_path: https://download-app.tp-link.com/tapo
+          hold_action:
+            action: url
+            url_path: https://download-app.tp-link.com/tapo
+          double_tap_action:
+            action: url
+            url_path: https://download-app.tp-link.com/tapo
+          card_mod:
+            style: |
+              ha-card {
+                background-color: red !important;
+                color: white; /* Optional: to ensure text/icon contrast */
+              }
+      - type: custom:button-card
+        color_type: blank-card
+        card_mod:
+          style: |
+            ha-card {
+                   margin-bottom: 1em;
+            }
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-person-card
+            icon_type: entity-picture
+            entity: person.craig
+            layout: vertical
+            secondary_info: last-changed
+            tap_action:
+              action: navigate
+              navigation_path: "#craig"
+            card_mod:
+              style: |
+                ha-card {
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+          - type: custom:mushroom-person-card
+            icon_type: entity-picture
+            entity: person.angela
+            layout: vertical
+            secondary_info: last-changed
+            tap_action:
+              action: navigate
+              navigation_path: "#angela"
+            card_mod:
+              style: |
+                ha-card {
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:heart
+        name: Favourites
+        column_fix: true
+        grid_options:
+          columns: 12
+          rows: 1
+        card_mod:
+          style: |
+            .container {
+              padding-bottom: 1%; /* Adjust the value as needed */
+            }
+      - type: custom:css-swipe-card
+        cardId: YourUniqueCardName
+        template: slider-horizontal
+        auto_height: false
+        pagination: true
+        navigation: false
+        card_gap: 0rem
+        timer: 0
+        navigation_next: mdi:chevron-right
+        navigation_prev: mdi:chevron-left
+        height: 6rem
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: |-
+                  {% if is_state("light.all_lights", 'on') %} 
+                    mdi:lightbulb-group-outline 
+                  {% else %} 
+                    mdi:lightbulb-group
+                  {% endif %}
+                icon_color: blue
+                layout: vertical
+                multiline_secondary: false
+                entity: light.all_lights
+                tap_action:
+                  action: navigate
+                  navigation_path: "#main-lights"
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:shopping-search-outline
+                icon_color: yellow
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: "#shopping-list"
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:trash-can-outline
+                icon_color: green
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: "#bins"
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:cake
+                icon_color: blue
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: mdi:food
+                icon_color: green
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/pantry
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:wifi
+                icon_color: orange
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: "#guest-info"
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:broom
+                icon_color: blue
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: "#jobs"
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:home-automation
+                icon_color: teal
+                layout: vertical
+                multiline_secondary: false
+                entity: zone.home
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/automations
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: mdi:thermometer
+                layout: vertical
+                multiline_secondary: false
+                icon_color: yellow
+                entity: sensor.sitting_temp_heat_index
+                tap_action:
+                  action: navigate
+                  navigation_path: "#temps"
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:math-log
+                icon_color: white
+                layout: vertical
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/logs
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:heart
+                icon_color: red
+                layout: vertical
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/health
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:information-slab-circle
+                icon_color: white
+                layout: vertical
+                tap_action:
+                  action: navigate
+                  navigation_path: "#info-panel"
+                card_mod:
+                  style: |
+                    ha-card { 
+                      border-radius: 40px;
+                    }
+        custom_css:
+          "--navigation-button-next-color": white
+          "--navigation-button-next-background-color": cornflowerblue
+          "--navigation-button-next-width": 50px
+          "--navigation-button-next-height": 50px
+          "--navigation-button-prev-color": white
+          "--navigation-button-prev-background-color": orchid
+          "--navigation-button-prev-width": 50px
+          "--navigation-button-prev-height": 50px
+          "--pagination-bullet-active-background-color": cornflowerblue
+          "--pagination-bullet-distance": 5px
+          "--pagination-margin-top": 50px
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:door-sliding
+        name: Main Doors
+        sub_button: []
+      - square: false
+        type: grid
+        cards:
+          - type: custom:room-card
+            icon: mdi:door
+            icon_color: "#FFFFFF"
+            name: Front Door
+            secondary: >
+              {{ states("sensor.hallway_temperature_sensor_temperature") | int
+              }} °C
+            action:
+              action: navigate
+              navigation_path: "#front-door"
+            entities:
+              - type: entity
+                icon: mdi:ceiling-light
+                icon_off: mdi:ceiling-light-outline
+                condition: >-
+                  {% set lights_on = expand(area_entities('Sitting Room')) |
+                  selectattr('domain','eq','light') |
+                  selectattr('state','eq','on') | list | count %}{% if lights_on
+                  > 0 %}true{% endif %}
+                entity: light.hallway_light_l2
+                color_on: "#1a89f5"
+                on_state: "on"
+              - type: entity
+                entity: light.front_door_light_l1
+                icon: mdi:outdoor-lamp
+                color_on: "#1a89f5"
+                on_state: "on"
+              - type: entity
+                color_on: "#1a89f5"
+                entity: binary_sensor.hallway_motion_sensor_1_occupancy
+                on_state: "on"
+                icon: mdi:motion-sensor
+                icon_off: ""
+              - type: entity
+                entity: binary_sensor.front_door_sensor_contact
+                icon: mdi:door-open
+                icon_off: mdi:door-closed-cancel
+                color_on: red
+                on_state: "on"
+            card_mod:
+              style: |
+                ha-card {
+                  width: auto !important;
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+          - type: custom:room-card
+            icon: mdi:door
+            icon_color: "#FFFFFF"
+            name: Back Door
+            secondary: >
+              {{ states("sensor.hallway_temperature_sensor_temperature") | int
+              }} °C
+            action:
+              action: navigate
+              navigation_path: "#back-door"
+            entities:
+              - type: entity
+                entity: light.backdoor_light
+                icon: mdi:outdoor-lamp
+                color_on: "#1a89f5"
+                on_state: "on"
+              - type: entity
+                entity: binary_sensor.back_door_sensor_contact
+                icon: mdi:door-open
+                icon_off: mdi:door-closed-cancel
+                color_on: red
+                on_state: "on"
+            card_mod:
+              style: |
+                ha-card {
+                  width: auto !important;
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+        columns: 2
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:home-group
+        name: Rooms
+      - type: custom:css-swipe-card
+        cardId: YourUniqueCardName
+        template: slider-horizontal
+        auto_height: false
+        pagination: true
+        navigation: false
+        card_gap: 0rem
+        timer: 0
+        navigation_next: mdi:chevron-right
+        navigation_prev: mdi:chevron-left
+        height: 12rem
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: mdi:sofa
+                icon_color: "#FFFFFF"
+                name: Sitting Room
+                secondary: |
+                  {{ states("sensor.sitting_room_temperature") | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#sitting-room"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.sitting_room_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    entity: light.sitting_room_lamps
+                    on_state: "on"
+                    icon: mdi:floor-lamp
+                    icon_off: mdi:desk-lamp-off
+                    color_on: "#1a89f5"
+                  - type: entity
+                    entity: remote.sitting_room_tv
+                    on_state: "on"
+                    icon: mdi:television-classic
+                    icon_off: mdi:television-classic-off
+                    color_on: "#1a89f5"
+                  - type: entity
+                    color_on: "#1a89f5"
+                    icon: mdi:cctv
+                    entity: switch.tv_socket_l2
+                    on_state: "on"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:room-card
+                icon: mdi:countertop-outline
+                icon_color: "#FFFFFF"
+                name: Kitchen
+                secondary: >
+                  {{ states("sensor.kitchen_temperature_sensor_temperature") |
+                  int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#kitchen"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.kitchen_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    entity: binary_sensor.kitchen_motion_sensor_1_occupancy
+                    on_state: "on"
+                    icon: mdi:motion-sensor
+                    icon_off: mdi:motion-sensor-off
+                    color_on: "#1a89f5"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: mdi:toilet
+                icon_color: "#FFFFFF"
+                name: Downstairs Bathroom
+                secondary: >
+                  {{
+                  states("sensor.downstairs_bathroom_temperature_temperature") |
+                  int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#down-bathroom"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.downstairs_bathroom
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:room-card
+                icon: mdi:toilet
+                icon_color: "#FFFFFF"
+                name: Upstairs Bathroom
+                secondary: >
+                  {{
+                  states("sensor.upstairs_bathroom_temperature_sensor_temperature")
+                  | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#up-bathroom"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.upstairs_bathroom
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    color_on: "#1a89f5"
+                    entity: binary_sensor.upstairs_bathroom_person_sensor_presence
+                    on_state: "on"
+                    icon: mdi:motion-sensor
+                    icon_off: ""
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+        custom_css:
+          "--navigation-button-next-color": white
+          "--navigation-button-next-background-color": cornflowerblue
+          "--navigation-button-next-width": 50px
+          "--navigation-button-next-height": 50px
+          "--navigation-button-prev-color": white
+          "--navigation-button-prev-background-color": orchid
+          "--navigation-button-prev-width": 50px
+          "--navigation-button-prev-height": 50px
+          "--pagination-bullet-active-background-color": cornflowerblue
+          "--pagination-bullet-distance": 5px
+          "--pagination-margin-top": 50px
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:home-group
+        name: Bedrooms
+        sub_button: []
+      - type: custom:css-swipe-card
+        cardId: YourUniqueCardName
+        template: slider-horizontal
+        auto_height: false
+        pagination: true
+        navigation: false
+        card_gap: 0rem
+        timer: 0
+        navigation_next: mdi:chevron-right
+        navigation_prev: mdi:chevron-left
+        height: 12rem
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: mdi:bed-double-outline
+                icon_color: "#FFFFFF"
+                name: Craig's Room
+                secondary: |
+                  {{ states("sensor.craig_room_temp") | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#craig-room"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.craig_s_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    entity: light.craig_s_socket_s2
+                    on_state: "on"
+                    icon: mdi:floor-lamp
+                    icon_off: mdi:desk-lamp-off
+                    color_on: "#1a89f5"
+                  - type: entity
+                    entity: media_player.craig_s_tv
+                    on_state: "on"
+                    icon: mdi:television-classic
+                    icon_off: mdi:television-classic-off
+                    color_on: "#1a89f5"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:room-card
+                icon: mdi:bed-double-outline
+                icon_color: "#FFFFFF"
+                name: Angela's Room
+                secondary: >
+                  {{
+                  states("sensor.angela_s_room_temperature_sensor_temperature")
+                  | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#angela-room"
+                entities:
+                  - type: entity
+                    entity: remote.mams_tv
+                    on_state: "on"
+                    icon: mdi:television-classic
+                    icon_off: mdi:television-classic-off
+                    color_on: "#1a89f5"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: mdi:bed-double-outline
+                icon_color: "#FFFFFF"
+                name: Spare Room
+                secondary: >
+                  {{ states("sensor.spare_room_temperature_sensor_temperature")
+                  | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#spare-room"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.spare_room_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:button-card
+                color_type: blank-card
+                card_mod:
+                  style: |
+                    ha-card {
+                           margin-bottom: 5em;
+                    }
+        custom_css:
+          "--navigation-button-next-color": white
+          "--navigation-button-next-background-color": cornflowerblue
+          "--navigation-button-next-width": 50px
+          "--navigation-button-next-height": 50px
+          "--navigation-button-prev-color": white
+          "--navigation-button-prev-background-color": orchid
+          "--navigation-button-prev-width": 50px
+          "--navigation-button-prev-height": 50px
+          "--pagination-bullet-active-background-color": cornflowerblue
+          "--pagination-bullet-distance": 5px
+          "--pagination-margin-top": 50px
+      - type: conditional
+        conditions:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 1023px)"
+        card:
+          type: custom:mushroom-chips-card
+          chips:
+            - type: back
+            - type: template
+              icon: mdi:lightbulb
+              content: >-
+                {{ expand(states.light) | selectattr( 'state', 'eq', 'on') |
+                list | count }}
+              entity: light.all_lights
+              icon_color: yellow
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    theme: noctis
+                    title: Active Lights
+                    content:
+                      type: vertical-stack
+                      cards:
+                        - type: custom:auto-entities
+                          card:
+                            square: false
+                            type: grid
+                            columns: 1
+                          card_param: cards
+                          filter:
+                            exclude:
+                              - state: "off"
+                              - entity_id: light.all_lights
+                              - entity_id: light.downstairs_main_lights
+                              - entity_id: light.upstairs_main_lights
+                              - entity_id: light.sitting_room_lamps
+                              - entity_id: light.all_main_lights
+                            include:
+                              - domain: light
+                                options:
+                                  type: custom:bubble-card
+                                  icon: mdi:lightbulb-on
+                                  card_type: button
+                                  button_type: switch
+                                  entities:
+                                    - sensor.0x00124b002502bdf5_battery
+                          sort:
+                            method: friendly_name
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.front_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.front_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: spacer
+            - type: entity
+              entity: person.craig
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              hold_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              icon: mdi:calendar
+              content_info: none
+              double_tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.green_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:trash-can-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.blue_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:recycle
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.birthdays
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:cake-variant-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.back_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.back_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: menu
+          alignment: justify
+          card_mod:
+            style:
+              card_mod: null
+              style: |
+                ha-card {
+                  --chip-background: none;
+                  z-index: 2;
+                  position: fixed;
+                  bottom: 0;
+                  padding: 10px;
+                  background: #2C3E50 !important;
+                  margin: 0 !important;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: calc(100%);
+                  top-padding: 100px;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                }
+              mushroom-conditional-chip:nth-child(3):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(9):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(6):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-green), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(7):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-blue), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+      - type: custom:bubble-card
+        card_type: separator
+        icon: mdi:texture-box
+        name: Other Areas
+        sub_button: []
+      - type: custom:css-swipe-card
+        cardId: YourUniqueCardName
+        template: slider-horizontal
+        auto_height: false
+        pagination: true
+        navigation: false
+        card_gap: 0rem
+        timer: 0
+        navigation_next: mdi:chevron-right
+        navigation_prev: mdi:chevron-left
+        height: 12rem
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: mdi:home-roof
+                icon_color: "#FFFFFF"
+                name: Loft
+                secondary: >
+                  {{ states("sensor.loft_temperature_sensor_temperature") | int
+                  }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#loft"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.loft_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    entity: binary_sensor.landing_motion_sensor_1_occupancy
+                    on_state: "on"
+                    icon: mdi:door-open
+                    icon_off: mdi:door-closed-cancel
+                    color_on: "#1a89f5"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:room-card
+                icon: mdi:stairs-up
+                icon_color: "#FFFFFF"
+                name: Landing
+                secondary: >
+                  {{ states("sensor.landing_temperature_sensor_temperature") |
+                  int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#landing"
+                entities:
+                  - type: entity
+                    icon: mdi:ceiling-light
+                    icon_off: mdi:ceiling-light-outline
+                    condition: >-
+                      {% set lights_on = expand(area_entities('Sitting Room')) |
+                      selectattr('domain','eq','light') |
+                      selectattr('state','eq','on') | list | count %}{% if
+                      lights_on > 0 %}true{% endif %}
+                    entity: light.landing_light
+                    color_on: "#1a89f5"
+                    on_state: "on"
+                  - type: entity
+                    entity: binary_sensor.landing_motion_sensor_1_occupancy
+                    on_state: "on"
+                    icon: mdi:motion-sensor
+                    icon_off: mdi:motion-sensor-off
+                    color_on: "#1a89f5"
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:room-card
+                icon: phu:shed-closed
+                icon_color: "#FFFFFF"
+                name: Shed
+                secondary: |
+                  {{ states("sensor.shed_temperature_temperature") | int }} °C
+                action:
+                  action: navigate
+                  navigation_path: "#shed"
+                entities: []
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: auto !important;
+                      border-radius: 15px;
+                      border: 1px solid transparent;
+                      height: 140px;
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                    }
+              - type: custom:button-card
+                color_type: blank-card
+                card_mod:
+                  style: |
+                    ha-card {
+                           margin-bottom: 5em;
+                    }
+        custom_css:
+          "--navigation-button-next-color": white
+          "--navigation-button-next-background-color": cornflowerblue
+          "--navigation-button-next-width": 50px
+          "--navigation-button-next-height": 50px
+          "--navigation-button-prev-color": white
+          "--navigation-button-prev-background-color": orchid
+          "--navigation-button-prev-width": 50px
+          "--navigation-button-prev-height": 50px
+          "--pagination-bullet-active-background-color": cornflowerblue
+          "--pagination-bullet-distance": 5px
+          "--pagination-margin-top": 50px
+      - type: custom:button-card
+        color_type: blank-card
+        card_mod:
+          style: |
+            ha-card {
+                   margin-bottom: 5em;
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#front-door"
+            show_header: true
+            name: Front Door
+            show_icon: false
+            show_attribute: false
+            entity: binary_sensor.front_door_sensor_contact
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0x84ba20fffe2ac34b_l1
+                name: Front Door
+                icon: mdi:outdoor-lamp
+                show_state: true
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0x84ba20fffe2ac34b_l2
+                name: Hallway
+                show_state: true
+                icon: mdi:ceiling-light
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:history
+            name: History
+          - type: custom:mushroom-template-card
+            secondary: >-
+              Last activity: {{
+              relative_time(states.binary_sensor.front_door_sensor_contact.last_updated)
+              }} ago
+            icon: |-
+              {% if states('binary_sensor.front_door_sensor_contact') == 'on' %}
+                mdi:door-open
+              {% else %}
+                mdi:door-closed
+              {% endif %}
+            entity: binary_sensor.front_door_sensor_contact
+            primary: Front Door
+            multiline_secondary: true
+            icon_color: |-
+              {% if states('binary_sensor.front_door_sensor_contact') == 'on' %}
+                red
+              {% else %}
+                green
+              {% endif %}
+            badge_icon: |-
+              {% if states('binary_sensor.front_door_sensor_contact') == 'on' %}
+                mdi:alert
+              {% else %}
+                mdi:check
+              {% endif %}
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            badge_color: |-
+              {% if states('binary_sensor.front_door_sensor_contact') == 'on' %}
+                red
+              {% else %}
+                green
+              {% endif %}
+        card_mod:
+          style: |
+            ha-card {
+              width: auto !important;
+              border-radius: 15px;
+              border: 1px solid transparent;
+              box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#back-door"
+            show_header: true
+            name: Back Door
+            show_icon: false
+            show_attribute: false
+            entity: binary_sensor.back_door_sensor_contact
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c138979a9307df
+                name: Back Door
+                icon: mdi:outdoor-lamp
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:history
+            name: History
+          - type: custom:mushroom-template-card
+            secondary: >-
+              Last activity: {{
+              relative_time(states.binary_sensor.back_door_sensor_contact.last_updated)
+              }} ago
+            icon: |-
+              {% if states('binary_sensor.back_door_sensor_contact') == 'on' %}
+                mdi:door-open
+              {% else %}
+                mdi:door-closed
+              {% endif %}
+            entity: binary_sensor.back_door_sensor_contact
+            primary: Back Door
+            multiline_secondary: true
+            icon_color: |-
+              {% if states('binary_sensor.back_door_sensor_contact') == 'on' %}
+                red
+              {% else %}
+                green
+              {% endif %}
+            badge_icon: |-
+              {% if states('binary_sensor.back_door_sensor_contact') == 'on' %}
+                mdi:alert
+              {% else %}
+                mdi:check
+              {% endif %}
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            badge_color: |-
+              {% if states('binary_sensor.back_door_sensor_contact') == 'on' %}
+                red
+              {% else %}
+                green
+              {% endif %}
+        card_mod:
+          style: |
+            ha-card {
+              width: auto !important;
+              border-radius: 15px;
+              border: 1px solid transparent;
+              box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#landing"
+            show_header: true
+            name: Landing
+            show_icon: false
+            show_attribute: false
+            entity: binary_sensor.front_door_sensor_contact
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c13839c3b2428b
+                name: Light
+                icon: mdi:lightbulb
+                show_state: true
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:temperature-celsius
+            name: Temperature
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Spare Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.landing_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.landing_temperature_sensor_humidity
+                show:
+                  in_chart: true
+        card_mod:
+          style: |
+            ha-card {
+              width: auto !important;
+              border-radius: 15px;
+              border: 1px solid transparent;
+              box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#loft"
+            show_header: true
+            name: Loft
+            show_icon: false
+            show_attribute: false
+            entity: binary_sensor.loft_hatch_sensor_contact
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.loft_light
+                name: Loft Light
+                icon: mdi:lightbulb
+                show_state: true
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:temperature-celsius
+            name: Temperature
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Spare Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.loft_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.loft_temperature_sensor_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#shed"
+            show_header: true
+            name: Shed
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:temperature-celsius
+            name: Temperature
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Spare Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.shed_temperature_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.shed_temperature_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#kitchen"
+            show_header: true
+            name: Kitchen
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:lightbulb
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c138e565b9ffec
+                name: Light
+                icon: mdi:ceiling-light
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:connection
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Craig's Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.kitchen_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.kitchen_temperature_sensor_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#spare-room"
+            show_header: true
+            name: Spare Room
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:lightbulb
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.spare_room_light
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:temperature-celsius
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Spare Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.spare_room_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.spare_room_temperature_sensor_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#angela-room"
+            show_header: true
+            name: Angela's Room
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:temperature-celsius
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Craig's Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.angela_s_room_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.angela_s_room_temperature_sensor_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#craig-room"
+            show_header: true
+            name: Craig's Room
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:lightbulb
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.craig_s_socket_s2
+                name: Lamp
+                icon: mdi:lamp-outline
+                show_state: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c138188336d86d
+                name: Light
+                icon: mdi:chandelier
+                show_state: true
+                use_accent_color: true
+                scrolling_effect: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Computers
+            icon: mdi:server
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.craig_pc
+                icon: phu:desktop-computer
+                show_state: true
+                name: PC
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.server
+                name: Server
+                icon: mdi:server
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Devices
+            icon: mdi:connection
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.craig_s_room_socket_l3
+                name: "Battery "
+                icon: mdi:speaker
+                show_state: true
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.craig_s_room_socket_l2
+                name: Blanket
+                icon: phu:elec_blanket
+                show_state: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.craig_s_room_socket_l1
+                name: Google Home
+                icon: mdi:google
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: TV
+            icon: cil:tv
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: media_player.craig_s_tv
+                state_not: "on"
+            card:
+              type: custom:bubble-card
+              card_type: button
+              button_type: switch
+              entity: switch.craig_tv
+              name: Turn on TV
+              icon: cil:tv
+              show_state: true
+          - type: custom:room-card
+            icon: mdi:account
+            icon_color: "#FFFFFF"
+            name: Craig's Room
+            secondary: ""
+            action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig-s-room
+            entities: []
+            card_mod:
+              style: |
+                ha-card {
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:temperature-celsius
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Craig's Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.craig_room_temp
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.craig_room_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#sitting-room"
+            show_header: true
+            name: Sitting Room
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_boolean.christmas_tree
+                state: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:bubble-card
+                  card_type: separator
+                  name: Christmas Lights
+                  icon: phu:christmas-lights
+                  sub_button: []
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:bubble-card
+                      card_type: button
+                      button_type: switch
+                      entity: light.tv_socket_l1
+                      name: Christmas Tree
+                      icon: mdi:pine-tree
+                      show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Lights
+            icon: mdi:lightbulb
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0x70b3d52b600490bd
+                name: Lamp
+                icon: mdi:floor-lamp
+                show_state: true
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c1384455791ccd
+                name: Light
+                icon: mdi:chandelier
+                show_state: true
+          - type: horizontal-stack
+            cards: []
+          - type: custom:bubble-card
+            card_type: separator
+            name: Devices
+            icon: mdi:connection
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                name: Google Home
+                icon: phu:nest-mini-alt
+                show_state: true
+                entity: switch.living_room_socket_s1
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.tv_socket_l2
+                name: ""
+                icon: mdi:cctv
+                show_state: true
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: switch.tv_socket_l2
+                state: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: picture-elements
+                  camera_image: camera.dog_cam_hd_stream
+                  camera_view: live
+                  elements:
+                    - type: icon
+                      icon: mdi:arrow-left
+                      tap_action:
+                        action: call-service
+                        service: button.press
+                        service_data:
+                          entity_id: button.dog_cam_move_left
+                      style:
+                        top: 50%
+                        left: 10%
+                        transform: translate(-50%, -50%)
+                    - type: icon
+                      icon: mdi:arrow-right
+                      tap_action:
+                        action: call-service
+                        service: button.press
+                        service_data:
+                          entity_id: button.dog_cam_move_right
+                      style:
+                        top: 50%
+                        left: 90%
+                        transform: translate(-50%, -50%)
+                    - type: icon
+                      icon: mdi:arrow-up
+                      tap_action:
+                        action: call-service
+                        service: button.press
+                        service_data:
+                          entity_id: button.dog_cam_move_up
+                      style:
+                        top: 5%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                    - type: icon
+                      icon: mdi:arrow-down
+                      tap_action:
+                        action: call-service
+                        service: button.press
+                        service_data:
+                          entity_id: button.dog_cam_move_down
+                      style:
+                        top: 95%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+          - type: custom:bubble-card
+            card_type: separator
+            name: TV
+            icon: mdi:connection
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: media_player.sitting_room_tv
+            name: TV
+            icon: mdi:speaker
+            show_state: true
+          - type: custom:room-card
+            icon: mdi:remote
+            icon_color: "#FFFFFF"
+            name: TV Remote
+            secondary: ""
+            action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Sitting Room TV
+                  content:
+                    type: vertical-stack
+                    cards:
+                      - type: grid
+                        columns: 1
+                        cards:
+                          - type: custom:tv-card
+                            entity: remote.sitting_room_tv
+                            power_row:
+                              - power
+                              - settings
+                            navigation_row: buttons
+                            source_row:
+                              - return
+                              - home
+                              - play
+                              - pause
+                            volume_row: buttons
+                            channel_row:
+                              - channel_up
+                              - guide
+                              - channel_down
+                            custom_keys:
+                              power:
+                                icon: mdi:power
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_POWER
+                              settings:
+                                icon: mdi:cog
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_MENU
+                              home:
+                                icon: mdi:home
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_HOME
+                              return:
+                                icon: mdi:arrow-left
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_RETURN
+                              enter:
+                                icon: mdi:checkbox-blank-circle
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_ENTER
+                              play:
+                                icon: mdi:play
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_PLAY
+                              pause:
+                                icon: mdi:pause
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_PAUSE
+                              up:
+                                icon: mdi:chevron-up
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_UP
+                              down:
+                                icon: mdi:chevron-down
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_DOWN
+                              left:
+                                icon: mdi:chevron-left
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_LEFT
+                              right:
+                                icon: mdi:chevron-right
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_RIGHT
+                              volume_up:
+                                icon: mdi:volume-plus
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_VOLUP
+                              volume_down:
+                                icon: mdi:volume-minus
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_VOLDOWN
+                              volume_mute:
+                                icon: mdi:volume-mute
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_MUTE
+                              channel_up:
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_CHUP
+                              channel_down:
+                                service: remote.send_command
+                                service_data:
+                                  entity_id: remote.sitting_room_tv
+                                  command: KEY_CHDOWN
+                  alignment: center
+            card_mod:
+              style: |
+                ha-card {
+                  border-radius: 15px;
+                  border: 1px solid transparent;
+                  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#down-bathroom"
+            show_header: true
+            name: Downstairs Bathroom
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c1384e530be62e
+                name: Light
+                icon: mdi:lightbulb
+                show_state: true
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:temperature-celsius
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Craig's Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.downstairs_bathroom_temperature_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.downstairs_bathroom_temperature_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#up-bathroom"
+            show_header: true
+            name: Upstairs Bathroom
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:lightbulb-group-outline
+            name: Lights
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: switch.0xa4c138f92200123f
+                name: Light
+                icon: mdi:lightbulb
+                show_state: true
+          - type: custom:button-card
+            color_type: blank-card
+            card_mod:
+              style: |
+                ha-card {
+                       margin-bottom: 3em;
+                }
+          - type: custom:bubble-card
+            card_type: separator
+            name: Temperature
+            icon: mdi:temperature-celsius
+          - type: custom:apexcharts-card
+            experimental:
+              color_threshold: true
+            graph_span: 24h
+            show:
+              last_updated: true
+            header:
+              standard_format: false
+              show: false
+              show_states: true
+              colorize_states: true
+              title: Craig's Room Temperature
+            now:
+              show: true
+              color: red
+              label: Now
+            span:
+              start: day
+            series:
+              - entity: sensor.upstairs_bathroom_temperature_sensor_temperature
+                type: line
+                group_by:
+                  func: last
+                  duration: 15m
+                stroke_width: 5
+                show:
+                  extremas: true
+                  header_color_threshold: true
+                color_threshold:
+                  - value: 18
+                    color: steelblue
+                  - value: 21
+                    color: midnightblue
+                  - value: 22
+                    color: orange
+                  - value: 23
+                    color: orangered
+                  - value: 24.5
+                    color: red
+              - entity: sensor.upstairs_bathroom_temperature_sensor_humidity
+                show:
+                  in_chart: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#craig"
+            show_header: true
+            name: Craig
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+            show_name: true
+          - type: custom:mushroom-entity-card
+            entity: person.craig
+            layout: horizontal
+            icon_type: entity-picture
+            primary_info: state
+            secondary_info: last-changed
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            card_mod:
+              style:
+                mushroom-shape-avatar$: |
+                  .picture {
+                    /* Style shadow ring around person avatar */                              
+                    box-shadow: 0px 0px 8px 4px var(--state-person);
+                    margin-right: var(--mush-title-spacing, 12px);
+                    }
+                .: |
+                  ha-card {
+                    /* Remove default card styling */
+                    --ha-card-background: rgba(var(--rgb-card-background-color), 0.);;
+                    box-shadow: none;
+                    --ha-card-border-width: 0;
+                    /* Increase icon size */
+                    --icon-size: 80px;
+                    /* Center card */
+                    margin: 25px 0px 0px 30px;
+                    width: fit-content;
+                    /* Add padding to bottom of card */
+                    padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                    
+                    /* Make card non-responsive to select and pointer */
+                    user-select: none;
+                    pointer-events: none;
+                    
+                    transition: all 0s;
+                  }
+                  :host {
+                    /* Define Person State colors. Can be added to theme */
+                    --state-person-home: var(--green-color);
+                    --state-person-not-home: var(--red-color);
+                    --state-person-zone: var(--blue-color);
+                    --state-person-unknown: var(--grey-color);
+                    /* Set Person State color */
+                    --state-person:
+                    {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                      var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                    {% else %}
+                      var(--state-person-zone)
+                    {% endif %};
+                    /* Match styling to Mushroom Title */
+                    --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                    --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                    --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                    --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                  }
+          - type: custom:mushroom-template-card
+            primary: Craig's Room
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig-s-room
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig-s-room
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig-s-room
+            card_mod:
+              style: |
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                }
+          - type: custom:mushroom-template-card
+            primary: Profile Settings
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/craig
+            card_mod:
+              style: |
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                }
+          - type: history-graph
+            entities:
+              - entity: person.craig
+                name: " "
+            hours_to_show: 24
+            title: Timeline
+            card_mod:
+              style:
+                $: |
+                  .card-header {
+                    /* Style timeline title */
+                    padding: 0px 24px !important;
+                    font-size: var(--mush-card-primary-font-size, 14px) !important;
+                    font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                    line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                    color: var(--primary-text-color) !important;
+                  }
+                .: |
+                  ha-card {
+                    /* Remove default card styling */
+                    --ha-card-box-shadow: none;
+                    --ha-card-background: none;
+                    --ha-card-border-width: 0;
+                    user-select: none;
+                  }
+                  .content {
+                    /* Add padding on right */
+                    padding: 0px 24px !important;
+                  }
+          - type: map
+            entities:
+              - entity: person.craig
+            dark_mode: false
+            hours_to_show: 24
+            aspect_ratio: "2:3"
+            card_mod:
+              style:
+                ha-map $ ha-entity-marker $: |
+                  .marker {
+                    /* Style person marker & adjust position to avoid blocking waypoints */
+                    border: 3px solid var(--state-person) !important;
+                    border-radius: 50% 50% 50% 0px !important;
+                    transform: rotate(-45deg) translate(50%, -50%);
+                    overflow: visible !important;
+                    background: var(--state-person) !important;
+                  }
+                  .entity-picture {
+                    /* Correct orientation of person avatar */
+                    transform: rotate(45deg);
+                    border-radius: 50%;
+                  }
+                ha-map $: |
+                  path:first-child { 
+                    /* Style accuracy radius */
+                    stroke: var(--state-person);
+                    fill: color-mix(in srgb, var(--state-person) 50%, transparent);
+                    stroke-width: 0px;
+                  }
+                  path:nth-child(even) {
+                    /* Styling for waypoints */
+                    stroke: var(--purple-color);
+                    stroke-width: 4px;
+                  }
+                  path:nth-child(odd):not(:first-child) { 
+                    /* Styling for lines */
+                    stroke: var(--purple-color);
+                    stroke-width: 4px;
+                  }
+                  .leaflet-control-attribution {
+                    /* Style attribution text */
+                    background: rgba(var(--rgb-card-background-color), 0.4) !important;
+                    font-size: 10px;
+                  }
+                  .leaflet-container a {
+                    /* Set color of zoom icons & attribution text */
+                    color: var(--secondary-text-color);
+                  }
+                  .leaflet-control-zoom-in,
+                  .leaflet-control-zoom-out {
+                    /* Style zoom buttons like Chips */
+                    border-radius: var(--mush-chip-border-radius, 19px) !important;
+                    padding: 3px;
+                    background: rgb(var(--rgb-secondary-text-color), 0.2) !important;
+                    margin: 8px 12px 0px;
+                    border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                  } 
+                  .leaflet-top {
+                    /* Move zoom buttons to bottom of map */
+                    bottom: 0px !important;
+                  }
+                  .leaflet-control-zoom {
+                    /* Allow buttons to be moved */
+                    position: absolute !important;
+                    /* Adjust spacing for border */
+                    bottom: calc(2 * var(--ha-card-border-width, 1px) + 56px);
+                    
+                    /* Remove extra margin */
+                    margin: 0px !important;
+                    /* Remove zoom control border */
+                    border: none !important;
+                  }
+                  .leaflet-container:after {
+                    /* Fade out map at top */
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background: linear-gradient(to top, transparent 65%, var(--card-background-color));
+                  }
+                ha-icon-button $ mwc-icon-button $: |
+                  button {
+                    /* Size center button to match Chip */
+                    height: var(--mush-chip-height, 36px) !important;
+                    width: var(--mush-chip-height, 36px) !important;
+                    --mdc-icon-size: 22px;
+                  }
+                .: |
+                  ha-card {
+                    /* Remove default card styling without affecting child elements */
+                    box-shadow: none;
+                    border-width: 0;
+                    border-radius: 0px 0px var(--ha-card-border-radius, 12px) var(--ha-card-border-radius, 12px);
+                    
+                    transition: all 0s;
+                  }
+                  :host {
+                    /* Define Person State colors. Can be added to theme */
+                    --state-person-home: var(--green-color);
+                    --state-person-not-home: var(--red-color);
+                    --state-person-zone: var(--blue-color);
+                    --state-person-unknown: var(--grey-color);
+                    /* Set person state color */
+                    --state-person:
+                    {% if is_state(config.entities[0].entity, ['home', 'not_home', 'unknown']) %}
+                      var(--state-person-{{ states(config.entities[0].entity) | replace('_', '-') }})
+                    {% else %}
+                      var(--state-person-zone)
+                    {% endif %};
+                  }
+                  ha-icon-button {
+                    /* Position center button */
+                    bottom: 12px;
+                    left: 12px !important;
+                    top: auto !important;
+                    /* Style center button to match Chip */
+                    color: var(--deep-orange-color) !important;
+                    background: color-mix(in srgb, var(--deep-orange-color) 20%, transparent);
+                    border-radius: var(--mush-chip-border-radius, 19px);
+                    border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                  }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#angela"
+            show_header: true
+            name: Angela
+            show_icon: false
+            show_attribute: false
+            show_state: false
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+            show_name: true
+          - type: custom:mushroom-entity-card
+            entity: person.angela
+            layout: horizontal
+            icon_type: entity-picture
+            primary_info: state
+            secondary_info: last-changed
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            card_mod:
+              style:
+                mushroom-shape-avatar$: |
+                  .picture {
+                    /* Style shadow ring around person avatar */                              
+                    box-shadow: 0px 0px 8px 4px var(--state-person);
+                    margin-right: var(--mush-title-spacing, 12px);
+                    }
+                .: |
+                  ha-card {
+                    /* Remove default card styling */
+                    --ha-card-background: rgba(var(--rgb-card-background-color), 0.);;
+                    box-shadow: none;
+                    --ha-card-border-width: 0;
+                    /* Increase icon size */
+                    --icon-size: 80px;
+                    /* Center card */
+                    margin: 25px 0px 0px 30px;
+                    width: fit-content;
+                    /* Add padding to bottom of card */
+                    padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                    
+                    /* Make card non-responsive to select and pointer */
+                    user-select: none;
+                    pointer-events: none;
+                    
+                    transition: all 0s;
+                  }
+                  :host {
+                    /* Define Person State colors. Can be added to theme */
+                    --state-person-home: var(--green-color);
+                    --state-person-not-home: var(--red-color);
+                    --state-person-zone: var(--blue-color);
+                    --state-person-unknown: var(--grey-color);
+                    /* Set Person State color */
+                    --state-person:
+                    {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                      var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                    {% else %}
+                      var(--state-person-zone)
+                    {% endif %};
+                    /* Match styling to Mushroom Title */
+                    --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                    --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                    --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                    --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                  }
+          - type: custom:mushroom-template-card
+            primary: Angela's Room
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela-s-room
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela-s-room
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela-s-room
+            card_mod:
+              style: |
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                }
+          - type: custom:mushroom-template-card
+            primary: Profile Settings
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/angela
+            card_mod:
+              style: |
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                }
+          - type: history-graph
+            entities:
+              - entity: person.angela
+                name: " "
+            hours_to_show: 24
+            title: Timeline
+            card_mod:
+              style:
+                $: |
+                  .card-header {
+                    /* Style timeline title */
+                    padding: 0px 24px !important;
+                    font-size: var(--mush-card-primary-font-size, 14px) !important;
+                    font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                    line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                    color: var(--primary-text-color) !important;
+                  }
+                .: |
+                  ha-card {
+                    /* Remove default card styling */
+                    --ha-card-box-shadow: none;
+                    --ha-card-background: none;
+                    --ha-card-border-width: 0;
+                    user-select: none;
+                  }
+                  .content {
+                    /* Add padding on right */
+                    padding: 0px 24px !important;
+                  }
+          - type: map
+            entities:
+              - entity: person.angela
+            dark_mode: false
+            hours_to_show: 24
+            aspect_ratio: "2:3"
+            card_mod:
+              style:
+                ha-map $ ha-entity-marker $: |
+                  .marker {
+                    /* Style person marker & adjust position to avoid blocking waypoints */
+                    border: 3px solid var(--state-person) !important;
+                    border-radius: 50% 50% 50% 0px !important;
+                    transform: rotate(-45deg) translate(50%, -50%);
+                    overflow: visible !important;
+                    background: var(--state-person) !important;
+                  }
+                  .entity-picture {
+                    /* Correct orientation of person avatar */
+                    transform: rotate(45deg);
+                    border-radius: 50%;
+                  }
+                ha-map $: |
+                  path:first-child { 
+                    /* Style accuracy radius */
+                    stroke: var(--state-person);
+                    fill: color-mix(in srgb, var(--state-person) 50%, transparent);
+                    stroke-width: 0px;
+                  }
+                  path:nth-child(even) {
+                    /* Styling for waypoints */
+                    stroke: var(--purple-color);
+                    stroke-width: 4px;
+                  }
+                  path:nth-child(odd):not(:first-child) { 
+                    /* Styling for lines */
+                    stroke: var(--purple-color);
+                    stroke-width: 4px;
+                  }
+                  .leaflet-control-attribution {
+                    /* Style attribution text */
+                    background: rgba(var(--rgb-card-background-color), 0.4) !important;
+                    font-size: 10px;
+                  }
+                  .leaflet-container a {
+                    /* Set color of zoom icons & attribution text */
+                    color: var(--secondary-text-color);
+                  }
+                  .leaflet-control-zoom-in,
+                  .leaflet-control-zoom-out {
+                    /* Style zoom buttons like Chips */
+                    border-radius: var(--mush-chip-border-radius, 19px) !important;
+                    padding: 3px;
+                    background: rgb(var(--rgb-secondary-text-color), 0.2) !important;
+                    margin: 8px 12px 0px;
+                    border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                  } 
+                  .leaflet-top {
+                    /* Move zoom buttons to bottom of map */
+                    bottom: 0px !important;
+                  }
+                  .leaflet-control-zoom {
+                    /* Allow buttons to be moved */
+                    position: absolute !important;
+                    /* Adjust spacing for border */
+                    bottom: calc(2 * var(--ha-card-border-width, 1px) + 56px);
+                    
+                    /* Remove extra margin */
+                    margin: 0px !important;
+                    /* Remove zoom control border */
+                    border: none !important;
+                  }
+                  .leaflet-container:after {
+                    /* Fade out map at top */
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background: linear-gradient(to top, transparent 65%, var(--card-background-color));
+                  }
+                ha-icon-button $ mwc-icon-button $: |
+                  button {
+                    /* Size center button to match Chip */
+                    height: var(--mush-chip-height, 36px) !important;
+                    width: var(--mush-chip-height, 36px) !important;
+                    --mdc-icon-size: 22px;
+                  }
+                .: |
+                  ha-card {
+                    /* Remove default card styling without affecting child elements */
+                    box-shadow: none;
+                    border-width: 0;
+                    border-radius: 0px 0px var(--ha-card-border-radius, 12px) var(--ha-card-border-radius, 12px);
+                    
+                    transition: all 0s;
+                  }
+                  :host {
+                    /* Define Person State colors. Can be added to theme */
+                    --state-person-home: var(--green-color);
+                    --state-person-not-home: var(--red-color);
+                    --state-person-zone: var(--blue-color);
+                    --state-person-unknown: var(--grey-color);
+                    /* Set person state color */
+                    --state-person:
+                    {% if is_state(config.entities[0].entity, ['home', 'not_home', 'unknown']) %}
+                      var(--state-person-{{ states(config.entities[0].entity) | replace('_', '-') }})
+                    {% else %}
+                      var(--state-person-zone)
+                    {% endif %};
+                  }
+                  ha-icon-button {
+                    /* Position center button */
+                    bottom: 12px;
+                    left: 12px !important;
+                    top: auto !important;
+                    /* Style center button to match Chip */
+                    color: var(--deep-orange-color) !important;
+                    background: color-mix(in srgb, var(--deep-orange-color) 20%, transparent);
+                    border-radius: var(--mush-chip-border-radius, 19px);
+                    border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                  }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#main-lights"
+            show_header: true
+            name: Main Lights
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: "15000"
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:door
+            name: Hallway
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.front_door_light_l1
+                name: Front Door
+                icon: mdi:outdoor-lamp
+                show_state: true
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.hallway_light_l2
+                name: Hallway
+                show_state: true
+                icon: mdi:ceiling-light
+          - type: custom:bubble-card
+            card_type: separator
+            name: Sitting Room
+            icon: mdi:sofa
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.lamp
+                name: Lamp
+                icon: mdi:floor-lamp
+                show_state: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.sitting_room_light
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Kitchen
+            icon: mdi:countertop-outline
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.kitchen_light
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.backdoor_light
+                name: Backdoor Light
+                icon: mdi:outdoor-lamp
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Downstairs Bathroom
+            icon: mdi:toilet
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.downstairs_bathroom
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:stairs-up
+            name: Landing
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.landing_light
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:shower
+            name: Upstairs Bathroom
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.upstairs_bathroom
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+          - type: custom:bubble-card
+            card_type: separator
+            name: Loft
+            icon: phu:rooms-attic
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: switch
+                entity: light.loft_light
+                name: Light
+                icon: mdi:ceiling-light
+                show_state: true
+        title: Main Lights Popup
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#shopping-list"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+            show_name: true
+          - type: vertical-stack
+            cards:
+              - type: custom:bubble-card
+                column_fix: true
+                card_type: separator
+                icon: mdi:store-check
+                name: Shopping List
+                entity: person.craig
+                card_mod:
+                  style: |
+                    .separator-container {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 100%;
+                            margin-top: 12px;
+                        }
+                        .separator-container div:last-child {
+                            display: none;
+                        }
+          - type: todo-list
+            entity: todo.shopping_list
+            hide_completed: true
+            card_mod:
+              style:
+                .: |
+                  }
+                  ha-card.type-todo-list div.divider {
+                    display: none;
+                  }
+                  ha-button-menu {
+                    display: none;
+                  }
+                  ha-card.type-todo-list mwc-list#checked {
+                    display: none;
+                  }
+                  ha-icon-button.reorderButton,
+                  ha-icon-button.addButton {
+                    margin-top: -17px !important;
+                  }
+                  :host {
+                    --mdc-checkbox-ripple-size: 33px;
+                  }
+                  ha-check-list-item {
+                    min-height: 28px !important;  
+                  }
+                  p.empty::before {
+                    content: "There's nothing on the shopping list" !important;
+                    font-size: 10pt !important;
+                   }    
+                  p.empty {
+                    /* There are probably more elegant ways to do this :) */
+                    font-size: 0 !important;
+                  }
+                  ha-card.type-todo-list div:last-of-type h2::before {
+                    content: "Items to buy" !important;
+                    font-size: 11pt !important;
+                  }
+
+                  ha-card.type-todo-list div:last-of-type h2 {
+                    font-size: 0 !important; /* Hide original text */
+                  }
+                ha-textfield:
+                  $: |
+                    .mdc-text-field {
+                      margin-top: -12px;
+                      margin-bottom: 5px;
+                      height: 50px !important;
+                    }
+                    .mdc-text-field__input {
+                      color: white !important;
+                    }
+          - type: conditional
+            conditions:
+              - condition: user
+                users:
+                  - 97ecc3f245034eaab1b5f28ebd0f72c7
+            card:
+              type: custom:expander-card
+              expanded: false
+              gap: 0.6em
+              padding: 1.2em
+              clear: false
+              clear-children: false
+              title: "n"
+              overlay-margin: 2em
+              child-padding: 0.5em
+              button-background: transparent
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: custom:mushroom-template-card
+                      primary: Notification Settings
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                            text-align: center;
+                            align-items: middle;
+                          }
+                          ha-svg-icon {
+                            background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                            border-radius: 50%; /* Rounded background */
+                            padding: 4px; /* Padding inside the icon */
+                          }
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-template-card
+                          secondary: >-
+                            {% if is_state('input_boolean.shopping_list_craig',
+                            'on') %}
+                              Enabled
+                            {% else %}
+                              Disabled
+                            {% endif %}
+                          icon: mdi:list-status
+                          entity: input_boolean.shopping_list_craig
+                          primary: Shopping List
+                          multiline_secondary: true
+                          icon_color: >-
+                            {% if states('input_boolean.shopping_list_craig') ==
+                            'on' %}
+                                green
+                              {% else %}
+                                red
+                              {% endif %}
+                          badge_icon: >-
+                            {% if states('input_boolean.shopping_list_craig') ==
+                            'on' %}
+                                mdi:check
+                              {% else %}
+                                mdi:file-excel-box
+                              {% endif %}
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-template-card
+                          secondary: >-
+                            {% if is_state('input_boolean.shop_alert_craig',
+                            'on') %}
+                              Enabled
+                            {% else %}
+                              Disabled
+                            {% endif %}
+                          icon: mdi:store
+                          entity: input_boolean.shop_alert_craig
+                          primary: Shop Alert
+                          multiline_secondary: true
+                          icon_color: >-
+                            {% if states('input_boolean.shop_alert_craig') ==
+                            'on' %}
+                                green
+                              {% else %}
+                                red
+                              {% endif %}
+                          badge_icon: >-
+                            {% if states('input_boolean.shop_alert_craig') ==
+                            'on' %}
+                                mdi:check
+                              {% else %}
+                                mdi:file-excel-box
+                              {% endif %}
+                    - type: custom:mushroom-template-card
+                      primary: Notification Times
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                            text-align: center;
+                            align-items: middle;
+                          }
+                          ha-svg-icon {
+                            background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                            border-radius: 50%; /* Rounded background */
+                            padding: 4px; /* Padding inside the icon */
+                          }
+                    - type: custom:time-picker-card
+                      entity: input_datetime.craig_shop_notify_on_time
+                      hour_mode: 24
+                      hour_step: 1
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      minute_step: 5
+                      layout:
+                        hour_mode: double
+                        align_controls: right
+                        name: inside
+                        embedded: false
+                        thin: true
+                      hide:
+                        seconds: true
+                        icon: true
+                        name: false
+                      link_values: true
+                      name: What time to start receiving notifications?
+                    - type: custom:time-picker-card
+                      entity: input_datetime.craig_shop_notify_off_time
+                      hour_mode: 24
+                      hour_step: 1
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      minute_step: 5
+                      layout:
+                        hour_mode: double
+                        align_controls: right
+                        name: inside
+                        embedded: false
+                        thin: true
+                      hide:
+                        seconds: true
+                        icon: true
+                        name: false
+                      link_values: true
+                      name: What time to stop receiving notifications?
+              title-card:
+                type: custom:bubble-card
+                card_type: separator
+                icon: mdi:store-cog-outline
+                entity: person.craig
+                name: Notification Settings
+                card_mod:
+                  style: |
+                    .separator-container {
+                            display: ;
+                        }
+                        .separator-container div:last-child {
+                            display: none;
+                        }
+              title-card-button-overlay: false
+              card_mod:
+                style: |
+                  .separator-container {
+                          display: ;
+                      }
+                      .separator-container div:last-child {
+                          display: none;
+                      }
+          - type: conditional
+            conditions:
+              - condition: user
+                users:
+                  - 6a627ecc94fc458980d5191419f8f11f
+            card:
+              type: custom:expander-card
+              expanded: false
+              gap: 0.6em
+              padding: 1.2em
+              clear: false
+              clear-children: false
+              title: "n"
+              overlay-margin: 2em
+              child-padding: 0.5em
+              button-background: transparent
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: custom:mushroom-template-card
+                      primary: Notification Settings
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                            text-align: center;
+                            align-items: middle;
+                          }
+                          ha-svg-icon {
+                            background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                            border-radius: 50%; /* Rounded background */
+                            padding: 4px; /* Padding inside the icon */
+                          }
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-template-card
+                          secondary: >-
+                            {% if is_state('input_boolean.shopping_list_craig',
+                            'on') %}
+                              Enabled
+                            {% else %}
+                              Disabled
+                            {% endif %}
+                          icon: mdi:list-status
+                          entity: input_boolean.shopping_list_angela
+                          primary: Shopping List
+                          multiline_secondary: true
+                          icon_color: >-
+                            {% if states('input_boolean.shopping_list_angela')
+                            == 'on' %}
+                                green
+                              {% else %}
+                                red
+                              {% endif %}
+                          badge_icon: >-
+                            {% if states('input_boolean.shopping_list_angela')
+                            == 'on' %}
+                                mdi:check
+                              {% else %}
+                                mdi:file-excel-box
+                              {% endif %}
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-template-card
+                          secondary: >-
+                            {% if is_state('input_boolean.shop_alert_angela',
+                            'on') %}
+                              Enabled
+                            {% else %}
+                              Disabled
+                            {% endif %}
+                          icon: mdi:store
+                          entity: input_boolean.shop_alert_angela
+                          primary: Shop Alert
+                          multiline_secondary: true
+                          icon_color: >-
+                            {% if states('input_boolean.shop_alert_angela') ==
+                            'on' %}
+                                green
+                              {% else %}
+                                red
+                              {% endif %}
+                          badge_icon: >-
+                            {% if states('input_boolean.shop_alert_angela') ==
+                            'on' %}
+                                mdi:check
+                              {% else %}
+                                mdi:file-excel-box
+                              {% endif %}
+                    - type: custom:mushroom-template-card
+                      primary: Notification Times
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                            text-align: center;
+                            align-items: middle;
+                          }
+                          ha-svg-icon {
+                            background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                            border-radius: 50%; /* Rounded background */
+                            padding: 4px; /* Padding inside the icon */
+                          }
+                    - type: custom:time-picker-card
+                      entity: input_datetime.angela_shop_notify_on_time
+                      hour_mode: 24
+                      hour_step: 1
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      minute_step: 5
+                      layout:
+                        hour_mode: double
+                        align_controls: right
+                        name: inside
+                        embedded: false
+                        thin: true
+                      hide:
+                        seconds: true
+                        icon: true
+                        name: false
+                      link_values: true
+                      name: What time to start receiving notifications?
+                    - type: custom:time-picker-card
+                      entity: input_datetime.angela_shop_notify_off_time
+                      hour_mode: 24
+                      hour_step: 1
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      minute_step: 5
+                      layout:
+                        hour_mode: double
+                        align_controls: right
+                        name: inside
+                        embedded: false
+                        thin: true
+                      hide:
+                        seconds: true
+                        icon: true
+                        name: false
+                      link_values: true
+                      name: What time to stop receiving notifications?
+              title-card:
+                type: custom:bubble-card
+                card_type: separator
+                icon: mdi:store-cog-outline
+                entity: person.craig
+                name: Notification Settings
+                card_mod:
+                  style: |
+                    .separator-container {
+                            display: ;
+                        }
+                        .separator-container div:last-child {
+                            display: none;
+                        }
+              title-card-button-overlay: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#bins"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:trash-can-outline
+            name: Wheelie Bins
+            entity: person.craig
+            card_mod:
+              style: |
+                .separator-container {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 12px;
+                    }
+                    .separator-container div:last-child {
+                        display: none;
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.formatted_green_bin
+                name: Green Bin
+                icon: mdi:trash-can
+                show_entity_picture: false
+                vertical: true
+                state_content: state
+                color: green
+                tap_action:
+                  action: none
+                icon_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+              - type: tile
+                entity: sensor.formatted_blue_bin
+                name: Blue Bin
+                icon: mdi:recycle
+                show_entity_picture: false
+                vertical: true
+                state_content: state
+                color: primary
+                tap_action:
+                  action: none
+                icon_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: custom:bubble-card
+            card_type: separator
+            name: Bin Calendar
+            icon: mdi:recycle
+          - type: custom:atomic-calendar-revive
+            enableModeChange: true
+            entities:
+              - entity: update.atomic_calendar_revive_update
+                icon: ""
+              - entity: calendar.green_bin
+                name: Green Bin
+                maxDaysToShow: 28
+                showMultiDay: true
+              - entity: calendar.blue_bin
+                name: Blue Bin
+                maxDaysToShow: 28
+            defaultMode: Event
+            showDeclined: true
+            hideFinishedEvents: true
+            showLocation: false
+            showDate: false
+            showAllDayEvents: true
+            compactMode: false
+            allDayBottom: true
+            offsetHeaderDate: true
+            showLastCalendarWeek: false
+            calShowDescription: false
+            disableCalEventLink: false
+            disableCalLocationLink: false
+            disableCalLink: false
+            dimFinishedEvents: true
+          - type: conditional
+            conditions:
+              - condition: or
+                conditions:
+                  - condition: state
+                    entity: binary_sensor.green_bin_today
+                    state: "on"
+                  - condition: state
+                    entity: binary_sensor.green_bin_tomorrow
+                    state: "on"
+                  - condition: state
+                    entity: binary_sensor.blue_bin_today
+                    state: "on"
+                  - condition: state
+                    entity: binary_sensor.blue_bin_tomorrow
+                    state: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:bubble-card
+                  card_type: separator
+                  name: Bin Status
+                  icon: mdi:list-status
+                - type: conditional
+                  conditions:
+                    - condition: or
+                      conditions:
+                        - condition: state
+                          entity: binary_sensor.green_bin_today
+                          state: "on"
+                        - condition: state
+                          entity: binary_sensor.green_bin_tomorrow
+                          state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    primary: Green Bin
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                    icon: ""
+                    card_mod:
+                      style: |
+                        ha-card { 
+                          box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                          text-align: center;
+                          align-items: middle;
+                        }
+                        ha-svg-icon {
+                          background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                          border-radius: 50%; /* Rounded background */
+                          padding: 4px; /* Padding inside the icon */
+                        }
+                    icon_color: ""
+                    secondary: ""
+                    badge_icon: ""
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: binary_sensor.green_bin_tomorrow
+                      state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    secondary: ""
+                    icon: mdi:trash-can
+                    entity: input_boolean.green_bin_out
+                    primary: |-
+                      {% if is_state('input_boolean.green_bin_out', 'on') %}
+                        The green bin is out
+                      {% else %}
+                        The green bin needs to be put out
+                      {% endif %}
+                    multiline_secondary: true
+                    icon_color: |-
+                      {% if states('input_boolean.green_bin_out') == 'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: |-
+                      {% if states('input_boolean.green_bin_out') == 'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+                    card_mod:
+                      style: |
+                        ha-card {
+                          text-align: center;
+                          /* Optionally center-align icon and badge as well */
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        }
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: binary_sensor.green_bin_today
+                      state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    secondary: ""
+                    icon: mdi:trash-can
+                    entity: input_boolean.green_bin_back
+                    primary: |-
+                      {% if is_state('input_boolean.green_bin_back', 'on') %}
+                        The green bin is back
+                      {% else %}
+                        The green bin needs to be put back
+                      {% endif %}
+                    multiline_secondary: true
+                    icon_color: |-
+                      {% if states('input_boolean.green_bin_back') == 'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: |-
+                      {% if states('input_boolean.green_bin_back') == 'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+                    card_mod:
+                      style: |
+                        ha-card {
+                          text-align: center;
+                          /* Optionally center-align icon and badge as well */
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        }
+                - type: conditional
+                  conditions:
+                    - condition: or
+                      conditions:
+                        - condition: state
+                          entity: binary_sensor.blue_bin_today
+                          state: "on"
+                        - condition: state
+                          entity: binary_sensor.blue_bin_tomorrow
+                          state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    primary: Blue Bin
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                    icon: ""
+                    icon_color: ""
+                    secondary: ""
+                    badge_icon: ""
+                    card_mod:
+                      style: |
+                        ha-card { 
+                          box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                          text-align: center;
+                          align-items: middle;
+                        }
+                        ha-svg-icon {
+                          background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                          border-radius: 50%; /* Rounded background */
+                          padding: 4px; /* Padding inside the icon */
+                        }
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: binary_sensor.blue_bin_tomorrow
+                      state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    secondary: ""
+                    icon: mdi:recycle
+                    entity: input_boolean.blue_bin_out
+                    primary: |-
+                      {% if is_state('input_boolean.blue_bin_out', 'on') %}
+                        The blue bin is out
+                      {% else %}
+                        The blue bin needs to be put out
+                      {% endif %}
+                    multiline_secondary: true
+                    icon_color: |-
+                      {% if states('input_boolean.blue_bin_out') == 'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: |-
+                      {% if states('input_boolean.blue_bin_out') == 'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+                    card_mod:
+                      style: |
+                        ha-card {
+                          text-align: center;
+                          /* Optionally center-align icon and badge as well */
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        }
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: binary_sensor.blue_bin_today
+                      state: "on"
+                  card:
+                    type: custom:mushroom-template-card
+                    secondary: ""
+                    icon: mdi:recycle
+                    entity: input_boolean.blue_bin_back
+                    primary: |-
+                      {% if is_state('input_boolean.blue_bin_back', 'on') %}
+                        The blue bin is back
+                      {% else %}
+                        The blue bin needs to be put back
+                      {% endif %}
+                    multiline_secondary: true
+                    icon_color: |-
+                      {% if states('input_boolean.blue_bin_back') == 'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: |-
+                      {% if states('input_boolean.blue_bin_back') == 'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+                    card_mod:
+                      style: |
+                        ha-card {
+                          text-align: center;
+                          /* Optionally center-align icon and badge as well */
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        }
+          - type: custom:expander-card
+            expanded: false
+            gap: 0.6em
+            padding: 1.2em
+            clear: true
+            clear-children: false
+            title: "n"
+            overlay-margin: 2em
+            child-padding: 0.5em
+            button-background: transparent
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Notification Times
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                    card_mod:
+                      style: |
+                        ha-card { 
+                          box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                          text-align: center;
+                          align-items: middle;
+                        }
+                        ha-svg-icon {
+                          background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                          border-radius: 50%; /* Rounded background */
+                          padding: 4px; /* Padding inside the icon */
+                        }
+                  - type: custom:time-picker-card
+                    entity: input_datetime.bin_put_out_time
+                    hour_mode: 24
+                    hour_step: 1
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                    minute_step: 1
+                    layout:
+                      hour_mode: double
+                      align_controls: right
+                      name: inside
+                      embedded: false
+                      thin: true
+                    hide:
+                      seconds: true
+                      icon: true
+                      name: false
+                    link_values: true
+                    name: Notification time for putting the bin out
+                  - type: custom:time-picker-card
+                    entity: input_datetime.bin_take_in_time
+                    hour_mode: 24
+                    hour_step: 1
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                    minute_step: 1
+                    layout:
+                      hour_mode: double
+                      align_controls: right
+                      name: inside
+                      embedded: false
+                      thin: true
+                    hide:
+                      seconds: true
+                      icon: true
+                      name: false
+                    link_values: true
+                    name: Notification time to put the bin away
+            title-card:
+              type: custom:bubble-card
+              card_type: separator
+              icon: mdi:cog
+              entity: person.craig
+              name: Settings
+              card_mod:
+                style: |
+                  .separator-container {
+                          display: ;
+                      }
+                      .separator-container div:last-child {
+                          display: none;
+                      }
+            title-card-button-overlay: false
+            card_mod:
+              style: |
+                .separator-container {
+                        display: ;
+                    }
+                    .separator-container div:last-child {
+                        display: none;
+                    }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#guest-info"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: switch.rt_ac86u_guest_2_4_ghz_1
+                state: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:bubble-card
+                  card_type: separator
+                  icon: mdi:book-information-variant
+                  name: Guest Information
+                  entity: person.craig
+                  card_mod:
+                    style: |
+                      .separator-container {
+                              display: inline-flex;
+                              align-items: center;
+                              justify-content: center;
+                              width: 100%;
+                              margin-top: 12px;
+                          }
+                          .separator-container div:last-child {
+                              display: none;
+                          }
+                - type: custom:gap-card
+                  height: 10
+                - type: custom:bubble-card
+                  card_type: separator
+                  name: WiFI
+                  icon: mdi:wifi
+                - type: custom:gap-card
+                  height: 5
+                - type: markdown
+                  content: >
+                    Scan the below QR code to join the WiFi network or
+                    alternatively use the below:
+
+
+                    Access Point: **MazMaka Guest**
+
+                    Password: **WIFI_PASSWORD**
+                - type: custom:gap-card
+                  height: 5
+                - type: custom:bubble-card
+                  card_type: separator
+                  name: QR Code
+                  icon: mdi:wifi
+                - type: picture
+                  image: /local/images/wifi/guest-wifi-qr.png
+                  hold_action:
+                    action: none
+                  tap_action:
+                    action: none
+                  card_mod:
+                    style: |
+                      ha-card {
+                        /* Force the card to a 140×140 box */
+                        width: 190px !important;
+                        height: 190px !important;
+
+                        /* Center the card itself horizontally in the Lovelace column */
+                        margin: 0 auto !important;
+
+                        /* Use flex to center the <img> inside vertically/horizontally */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        /* Hide any overflow if the image or container misalign */
+                        overflow: hidden;
+                      }
+                      ha-card > img {
+                        /* Make the <img> fill the 140×140 box exactly */
+                        width: 100% !important;
+                        height: 100% !important;
+
+                        /* Choose how to fit or crop the image:
+                           - contain: show entire image (may letterbox)
+                           - cover:   fill the box (may crop edges) */
+                        object-fit: contain;
+
+                        /* Center the image in case of letterboxing or cropping */
+                        object-position: center;
+                        display: block;
+                      }
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: switch.rt_ac86u_guest_2_4_ghz_1
+                state: "on"
+            card:
+              type: custom:expander-card
+              gap: 0.6em
+              padding: 1em
+              clear: true
+              clear-children: true
+              title: ""
+              overlay-margin: 2em
+              child-padding: 0.5em
+              button-background: transparent
+              header-color: "#FF5733"
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: custom:mushroom-template-card
+                      secondary: ""
+                      icon: mdi:wifi
+                      entity: switch.rt_ac86u_guest_2_4_ghz_1
+                      primary: >-
+                        {% if is_state('switch.rt_ac86u_guest_2_4_ghz_1', 'on')
+                        %}
+                          Turn off Guest WIFI
+                        {% else %}
+                          Turn on Guest WIFI
+                        {% endif %}
+                      multiline_secondary: true
+                      icon_color: >-
+                        {% if states('switch.rt_ac86u_guest_2_4_ghz_1') == 'on'
+                        %}
+                            green
+                          {% else %}
+                            red
+                          {% endif %}
+                      badge_icon: >-
+                        {% if states('switch.rt_ac86u_guest_2_4_ghz_1') == 'on'
+                        %}
+                            mdi:check
+                          {% else %}
+                            mdi:file-excel-box
+                          {% endif %}
+                      card_mod:
+                        style: |
+                          ha-card {
+                            text-align: center;
+                            /* Optionally center-align icon and badge as well */
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                    - type: conditional
+                      conditions:
+                        - condition: user
+                          users:
+                            - 6a627ecc94fc458980d5191419f8f11f
+                            - 97ecc3f245034eaab1b5f28ebd0f72c7
+                            - 20908b220e8c434896f97c2f27ce0b7b
+                            - bd6c31f4218e4ab1abf827efc58fe522
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - show_name: true
+                            show_icon: true
+                            type: button
+                            tap_action:
+                              action: toggle
+                            entity: button.rt_ac86u_reboot
+                            name: Reboot Router
+                            icon: mdi:router-network
+                          - show_name: true
+                            show_icon: true
+                            type: button
+                            tap_action:
+                              action: toggle
+                            entity: button.rt_ac86u_restart_wireless
+                            name: Reboot Wireless
+                            icon: mdi:router-wireless-settings
+              entities:
+                - entity: binary_sensor.rt_ac86u_internet
+                  name: Internet Status
+                - entity: switch.rt_ac86u_openvpn_server_2
+                  secondary_info: none
+                  name: VPN (All Access)
+              title-card:
+                type: custom:bubble-card
+                column_fix: true
+                card_type: separator
+                icon: mdi:cog
+                name: Quick Controls
+                entity: switch.unraid_server_mazmaka_mazmaka_docker_swag
+                card_mod:
+                  style: |
+                    .separator-container {
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 100%;
+                      margin-top: 12px;
+                    }
+                    .separator-container div:last-child {
+                      display: none;
+                    }
+              card_mod:
+                style: |
+                  .header {
+                    color: white;  /* Custom header text color */
+                    font-weight: bold;  /* Make the text bold */
+                    font-size: 18px;  /* Adjust font size */
+                  }
+                  .primary.title.svelte-1n379ek {
+                    text-align: center;  /* Center-align the specific div text */
+                  }
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: switch.rt_ac86u_guest_2_4_ghz_1
+                state_not: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:bubble-card
+                  card_type: separator
+                  icon: mdi:book-information-variant
+                  name: Guest Information
+                  entity: person.craig
+                  card_mod:
+                    style: |
+                      .separator-container {
+                              display: inline-flex;
+                              align-items: center;
+                              justify-content: center;
+                              width: 100%;
+                              margin-top: 12px;
+                          }
+                          .separator-container div:last-child {
+                              display: none;
+                          }
+                - type: custom:mushroom-template-card
+                  secondary: ""
+                  icon: mdi:wifi
+                  entity: switch.rt_ac86u_guest_2_4_ghz_1
+                  primary: |-
+                    {% if is_state('switch.rt_ac86u_guest_2_4_ghz_1', 'on') %}
+                      Turn off Guest WIFI
+                    {% else %}
+                      Turn on Guest WIFI
+                    {% endif %}
+                  multiline_secondary: true
+                  icon_color: |-
+                    {% if states('switch.rt_ac86u_guest_2_4_ghz_1') == 'on' %}
+                        green
+                      {% else %}
+                        red
+                      {% endif %}
+                  badge_icon: |-
+                    {% if states('switch.rt_ac86u_guest_2_4_ghz_1') == 'on' %}
+                        mdi:check
+                      {% else %}
+                        mdi:file-excel-box
+                      {% endif %}
+                  card_mod:
+                    style: |
+                      ha-card {
+                        text-align: center;
+                        /* Optionally center-align icon and badge as well */
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                      }
+        grid_options:
+          rows: auto
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#temps"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:temperature-celsius
+            name: 7 Day Temperatures
+            entity: person.craig
+            card_mod:
+              style: |
+                .separator-container {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 12px;
+                    }
+                    .separator-container div:last-child {
+                        display: none;
+                    }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Hallway
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.hallway_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Sitting Room Temp
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.sitting_room_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Kitchen Temperature
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.kitchen_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Landing Temperature
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.landing_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Craig's Room Temp
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.craig_room_temp
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Angela's Room Temp
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.angela_s_room_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Spare Room Temp
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.spare_room_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Upstairs Bathroom Temp
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.upstairs_bathroom_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Loft Temperature
+                hours_to_show: 62
+                entities:
+                  - entity: sensor.loft_temperature_sensor_temperature
+                line_color: orangered
+                show:
+                  extrema: true
+        card_mod:
+          style: |
+            ha-card { 
+              border-radius: 40px;
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#info-panel"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+          - type: custom:mushroom-template-card
+            primary: Admin
+            visibility:
+              - condition: user
+                users:
+                  - 97ecc3f245034eaab1b5f28ebd0f72c7
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/health
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/health
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/health
+            card_mod:
+              style: >
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                } /* Style person marker & adjust position to avoid blocking
+                waypoints */ border: 3px solid var(--state-person) !important;
+                border-radius: 50% 50% 50% 0px !important; transform:
+                rotate(-45deg) translate(50%, -50%); overflow: visible
+                !important; background: var(--state-person) !important;
+          - type: custom:mushroom-template-card
+            primary: Health Status
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/information
+            hold_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/information
+            double_tap_action:
+              action: navigate
+              navigation_path: /dashboard-mobile/information
+            icon: ""
+            card_mod:
+              style: >
+                ha-card { 
+                  box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.66);
+                  text-align: center;
+                  align-items: middle;
+                } /* Style person marker & adjust position to avoid blocking
+                waypoints */ border: 3px solid var(--state-person) !important;
+                border-radius: 50% 50% 50% 0px !important; transform:
+                rotate(-45deg) translate(50%, -50%); overflow: visible
+                !important; background: var(--state-person) !important;
+        card_mod:
+          style: |
+            ha-card { 
+              border-radius: 40px;
+            }
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#jobs"
+            show_header: true
+            name: ""
+            show_icon: false
+            show_attribute: false
+            show_state: true
+            show_last_changed: false
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            button_action:
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+            scrolling_effect: true
+            styles: |-
+              .bubble-header .bubble-name-container {
+                align-items: center;
+              }
+
+              }
+            auto_close: ""
+            hide_backdrop: false
+            button_type: name
+            show_name: true
+          - type: custom:bubble-card
+            card_type: separator
+            icon: mdi:calendar-check
+            name: Household Jobs
+            entity: person.craig
+            card_mod:
+              style: |
+                .separator-container {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 12px;
+                    }
+                    .separator-container div:last-child {
+                        display: none;
+                    }
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Overdue Jobs
+            filter:
+              include:
+                - integration: chore_helper
+                  state: < 0
+                  options:
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Complete Job
+                          content: |
+                            <p>
+                              <ha-icon icon="mdi:chat-question" style="color: steelblue;"></ha-icon>
+                              <b> Mark job as completed?</b>
+                            </p>
+                          right_button: "Yes"
+                          left_button: "No"
+                          right_button_action:
+                            service: chore_helper.complete
+                            data:
+                              entity_id: this.entity_id
+                          left_button_action: null
+              exclude: []
+            show_empty: true
+            card_mod:
+              style: |
+                :card-conent {
+                  --primary-text-color: red;
+                  color: red !important;
+                }
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Today
+            filter:
+              include:
+                - integration: chore_helper
+                  state: < 0
+                  options:
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Complete Job
+                          content: >
+                            <p> <ha-icon icon="mdi:chat-question" style="color:
+                            steelblue;"></ha-icon> <b> Mark job as
+                            completed?</b> </p>
+                          right_button: "Yes"
+                          left_button: "No"
+                          right_button_action:
+                            service: chore_helper.complete
+                            data:
+                              entity_id: this.entity_id
+                          left_button_action: null
+              exclude: []
+            sort:
+              method: state
+              numeric: true
+              show_empty: false
+            show_empty: true
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Upcoming
+              state_color: true
+              show_header_toggle: true
+            filter:
+              include:
+                - integration: chore_helper
+                  state 1: "> 0"
+                  state 2: <= 7
+                  options:
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Complete Job
+                          content: >
+                            <p> <ha-icon icon="mdi:chat-question" style="color:
+                            steelblue;"></ha-icon> <b> Mark job as
+                            completed?</b> </p>
+                          right_button: "Yes"
+                          left_button: "No"
+                          right_button_action:
+                            service: chore_helper.complete
+                            data:
+                              entity_id: this.entity_id
+                          left_button_action: null
+              exclude: []
+            sort:
+              method: state
+              numeric: true
+              show_empty: true
+    column_span: 1
+badges:
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.product_highland_spring_big_bottle
+    icon: mdi:bottle-soda
+    name: Big Water
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-mobile/pantry
+    color: ""
+    visibility:
+      - condition: user
+        users:
+          - bd6c31f4218e4ab1abf827efc58fe522
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.product_pepsi_max
+    icon: mdi:bottle-soda
+    name: Pepsi Max
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-mobile/pantry
+    color: black
+    visibility:
+      - condition: user
+        users:
+          - bd6c31f4218e4ab1abf827efc58fe522
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.product_costco_water
+    icon: mdi:bottle-soda
+    name: Water
+    color: white
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-mobile/pantry
+    visibility:
+      - condition: user
+        users:
+          - bd6c31f4218e4ab1abf827efc58fe522
+max_columns: 4
+cards: []

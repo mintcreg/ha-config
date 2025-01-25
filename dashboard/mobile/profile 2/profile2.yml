@@ -1,0 +1,751 @@
+title: Profile #2
+path: profile2
+type: sections
+max_columns: 4
+subview: true
+sections:
+  - type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: person.angela
+            layout: horizontal
+            icon_type: entity-picture
+            primary_info: state
+            secondary_info: last-changed
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            card_mod:
+              style:
+                mushroom-shape-avatar$: |
+                  .picture {
+
+                    /* Style shadow ring around person avatar */                              
+                    box-shadow: 0px 0px 8px 4px var(--state-person);
+                    margin-right: var(--mush-title-spacing, 12px);
+                    }
+                .: |
+                  ha-card {
+
+                    /* Remove default card styling */
+                    --ha-card-background: rgba(var(--rgb-card-background-color), 0.);;
+                    box-shadow: none;
+                    --ha-card-border-width: 0;
+
+                    /* Increase icon size */
+                    --icon-size: 80px;
+
+                    /* Center card */
+                    margin: 25px 0px 0px 30px;
+                    width: fit-content;
+
+                    /* Add padding to bottom of card */
+                    padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                    
+                    /* Make card non-responsive to select and pointer */
+                    user-select: none;
+                    pointer-events: none;
+                    
+                    transition: all 0s;
+                  }
+                  :host {
+
+                    /* Define Person State colors. Can be added to theme */
+                    --state-person-home: var(--green-color);
+                    --state-person-not-home: var(--red-color);
+                    --state-person-zone: var(--blue-color);
+                    --state-person-unknown: var(--grey-color);
+
+                    /* Set Person State color */
+                    --state-person:
+                    {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                      var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                    {% else %}
+                      var(--state-person-zone)
+                    {% endif %};
+
+                    /* Match styling to Mushroom Title */
+                    --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                    --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                    --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                    --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                    --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                  }
+      - type: custom:expander-card
+        expanded: true
+        gap: 0.6em
+        padding: 1.2em
+        clear: false
+        clear-children: false
+        title: "n"
+        overlay-margin: 2em
+        child-padding: 0.5em
+        button-background: transparent
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-template-card
+                secondary: >
+                  {{ states ('sensor.dvla_REGISTRATION_PLATE_taxstatus') }} 
+
+                  Expires: {{ states
+                  ('sensor.formatted_tax_expiry_date_REGISTRATION_PLATE') }}
+                icon: mdi:car
+                entity: binary_sensor.tessy_user_present_2
+                primary: Tax Status
+                multiline_secondary: true
+                icon_color: |-
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_taxstatus') == 'Taxed' %}
+                      green
+                    {% else %}
+                      red
+                    {% endif %}
+                badge_icon: |-
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_taxstatus') == 'Taxed' %}
+                      mdi:check
+                    {% else %}
+                      mdi:alert
+                    {% endif %}
+                fill_container: false
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style:
+                    mushroom-state-info$: |
+                      .container {
+                       --card-secondary-font-size: 11px;
+                       --card-secondary-font-weight: bold;
+                       --card-primary-font-weight: ;
+                       }
+              - type: custom:mushroom-template-card
+                secondary: >
+                  {{ states ('sensor.dvla_REGISTRATION_PLATE_motstatus') }} 
+
+                  Expires: {{ states
+                  ('sensor.formatted_mot_expiry_date_REGISTRATION_PLATE') }}
+                icon: mdi:car
+                entity: binary_sensor.tessy_user_present_2
+                primary: MOT Status
+                multiline_secondary: true
+                icon_color: |-
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_motstatus') == 'Valid' %}
+                      green
+                    {% else %}
+                      red
+                    {% endif %}
+                badge_icon: |-
+                  {% if states('sensor.dvla_REGISTRATION_PLATE_motstatus') == 'Valid' %}
+                      mdi:check
+                    {% else %}
+                      mdi:alert
+                    {% endif %}
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+        title-card:
+          type: custom:bubble-card
+          card_type: separator
+          icon: mdi:car-cog
+          entity: person.craig_archbold
+          name: Car Information
+          card_mod:
+            style: |
+              .separator-container {
+                      display: ;
+                  }
+                  .separator-container div:last-child {
+                      display: none;
+                  }
+        title-card-button-overlay: false
+        card_mod:
+          style: |
+            .separator-container {
+                    display: ;
+                }
+                .separator-container div:last-child {
+                    display: none;
+                }
+      - type: custom:expander-card
+        expanded: false
+        gap: 0.6em
+        padding: 1.2em
+        clear: false
+        clear-children: false
+        title: "n"
+        overlay-margin: 2em
+        child-padding: 0.5em
+        button-background: transparent
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: Notification Settings
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                      text-align: center;
+                      align-items: middle;
+                    }
+                    ha-svg-icon {
+                      background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                      border-radius: 50%; /* Rounded background */
+                      padding: 4px; /* Padding inside the icon */
+                    }
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    secondary: >-
+                      {% if
+                      is_state('input_boolean.security_notifications_angela',
+                      'on') %}
+                        Enabled
+                      {% else %}
+                        Disabled
+                      {% endif %}
+                    icon: mdi:security
+                    entity: input_boolean.security_notifications_angela
+                    primary: All Security Notifications
+                    multiline_secondary: true
+                    icon_color: >-
+                      {% if
+                      states('input_boolean.security_notifications_angela') ==
+                      'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: >-
+                      {% if
+                      states('input_boolean.security_notifications_angela') ==
+                      'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+        title-card:
+          type: custom:bubble-card
+          card_type: separator
+          icon: mdi:store-cog-outline
+          entity: person.craig_archbold
+          name: Security Settings
+          card_mod:
+            style: |
+              .separator-container {
+                      display: ;
+                  }
+                  .separator-container div:last-child {
+                      display: none;
+                  }
+        title-card-button-overlay: false
+        card_mod:
+          style: |
+            .separator-container {
+                    display: ;
+                }
+                .separator-container div:last-child {
+                    display: none;
+                }
+      - type: custom:expander-card
+        expanded: false
+        gap: 0.6em
+        padding: 1.2em
+        clear: false
+        clear-children: false
+        title: "n"
+        overlay-margin: 2em
+        child-padding: 0.5em
+        button-background: transparent
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: Notification Settings
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                      text-align: center;
+                      align-items: middle;
+                    }
+                    ha-svg-icon {
+                      background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                      border-radius: 50%; /* Rounded background */
+                      padding: 4px; /* Padding inside the icon */
+                    }
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    secondary: >-
+                      {% if is_state('input_boolean.shopping_list_craig', 'on')
+                      %}
+                        Enabled
+                      {% else %}
+                        Disabled
+                      {% endif %}
+                    icon: mdi:list-status
+                    entity: input_boolean.shopping_list_angela
+                    primary: Shopping List
+                    multiline_secondary: true
+                    icon_color: >-
+                      {% if states('input_boolean.shopping_list_angela') == 'on'
+                      %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: >-
+                      {% if states('input_boolean.shopping_list_angela') == 'on'
+                      %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    secondary: |-
+                      {% if is_state('input_boolean.shop_alert_angela', 'on') %}
+                        Enabled
+                      {% else %}
+                        Disabled
+                      {% endif %}
+                    icon: mdi:store
+                    entity: input_boolean.shop_alert_angela
+                    primary: Shop Alert
+                    multiline_secondary: true
+                    icon_color: |-
+                      {% if states('input_boolean.shop_alert_angela') == 'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: |-
+                      {% if states('input_boolean.shop_alert_angela') == 'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+              - type: custom:mushroom-template-card
+                primary: Notification Times
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                      text-align: center;
+                      align-items: middle;
+                    }
+                    ha-svg-icon {
+                      background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                      border-radius: 50%; /* Rounded background */
+                      padding: 4px; /* Padding inside the icon */
+                    }
+              - type: custom:time-picker-card
+                entity: input_datetime.angela_shop_notify_on_time
+                hour_mode: 24
+                hour_step: 1
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                minute_step: 5
+                layout:
+                  hour_mode: double
+                  align_controls: right
+                  name: inside
+                  embedded: false
+                  thin: true
+                hide:
+                  seconds: true
+                  icon: true
+                  name: false
+                link_values: true
+                name: What time to start receiving notifications?
+              - type: custom:time-picker-card
+                entity: input_datetime.angela_shop_notify_off_time
+                hour_mode: 24
+                hour_step: 1
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                minute_step: 5
+                layout:
+                  hour_mode: double
+                  align_controls: right
+                  name: inside
+                  embedded: false
+                  thin: true
+                hide:
+                  seconds: true
+                  icon: true
+                  name: false
+                link_values: true
+                name: What time to stop receiving notifications?
+        title-card:
+          type: custom:bubble-card
+          card_type: separator
+          icon: mdi:store-cog-outline
+          entity: person.craig_archbold
+          name: Shopping Settings
+          card_mod:
+            style: |
+              .separator-container {
+                      display: ;
+                  }
+                  .separator-container div:last-child {
+                      display: none;
+                  }
+        title-card-button-overlay: false
+        card_mod:
+          style: |
+            .separator-container {
+                    display: ;
+                }
+                .separator-container div:last-child {
+                    display: none;
+                }
+      - type: custom:expander-card
+        expanded: false
+        gap: 0.6em
+        padding: 1.2em
+        clear: false
+        clear-children: false
+        title: "n"
+        overlay-margin: 2em
+        child-padding: 0.5em
+        button-background: transparent
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: Notification Settings
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                card_mod:
+                  style: |
+                    ha-card { 
+                      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.66);
+                      text-align: center;
+                      align-items: middle;
+                    }
+                    ha-svg-icon {
+                      background: rgba(0, 0, 0, 0.1); /* Light transparent background */
+                      border-radius: 50%; /* Rounded background */
+                      padding: 4px; /* Padding inside the icon */
+                    }
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    secondary: >-
+                      {% if is_state('input_boolean.birthday_reminder_angela',
+                      'on') %}
+                        Enabled
+                      {% else %}
+                        Disabled
+                      {% endif %}
+                    icon: mdi:cake-variant-outline
+                    entity: input_boolean.birthday_reminder_angela
+                    primary: Birthday Reminders
+                    multiline_secondary: true
+                    icon_color: >-
+                      {% if states('input_boolean.birthday_reminder_angela') ==
+                      'on' %}
+                          green
+                        {% else %}
+                          red
+                        {% endif %}
+                    badge_icon: >-
+                      {% if states('input_boolean.birthday_reminder_angela') ==
+                      'on' %}
+                          mdi:check
+                        {% else %}
+                          mdi:file-excel-box
+                        {% endif %}
+        title-card:
+          type: custom:bubble-card
+          card_type: separator
+          icon: mdi:store-cog-outline
+          entity: person.craig_archbold
+          name: Birthday Settings
+          card_mod:
+            style: |
+              .separator-container {
+                      display: ;
+                  }
+                  .separator-container div:last-child {
+                      display: none;
+                  }
+        title-card-button-overlay: false
+        card_mod:
+          style: |
+            .separator-container {
+                    display: ;
+                }
+                .separator-container div:last-child {
+                    display: none;
+                }
+      - type: custom:button-card
+        color_type: blank-card
+        card_mod:
+          style: |
+            ha-card {
+                   margin-bottom: 5em;
+            }
+      - type: conditional
+        conditions:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 1023px)"
+        card:
+          type: custom:mushroom-chips-card
+          chips:
+            - type: back
+            - type: template
+              icon: mdi:lightbulb
+              content: >-
+                {{ expand(states.light) | selectattr( 'state', 'eq', 'on') |
+                list | count }}
+              entity: light.all_lights
+              icon_color: yellow
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    theme: noctis
+                    title: Active Lights
+                    content:
+                      type: vertical-stack
+                      cards:
+                        - type: custom:auto-entities
+                          card:
+                            square: false
+                            type: grid
+                            columns: 1
+                          card_param: cards
+                          filter:
+                            exclude:
+                              - state: "off"
+                              - entity_id: light.all_lights
+                              - entity_id: light.downstairs_main_lights
+                              - entity_id: light.upstairs_main_lights
+                              - entity_id: light.sitting_room_lamps
+                              - entity_id: light.all_main_lights
+                            include:
+                              - domain: light
+                                options:
+                                  type: custom:bubble-card
+                                  icon: mdi:lightbulb-on
+                                  card_type: button
+                                  button_type: switch
+                                  entities:
+                                    - sensor.0x00124b002502bdf5_battery
+                          sort:
+                            method: friendly_name
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.front_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.front_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: spacer
+            - type: entity
+              entity: person.craig_archbold
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/0
+              hold_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/0
+              icon: mdi:home
+              content_info: none
+            - type: spacer
+            - type: entity
+              entity: person.craig_archbold
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              hold_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+              icon: mdi:calendar
+              content_info: none
+              double_tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.green_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:trash-can-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.blue_bin
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:recycle
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/bin-calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: calendar.birthdays
+                  state: "on"
+              chip:
+                type: action
+                icon: mdi:cake-variant-outline
+                tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                hold_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+                double_tap_action:
+                  action: navigate
+                  navigation_path: /dashboard-mobile/calendar
+            - type: conditional
+              conditions:
+                - condition: state
+                  entity: binary_sensor.back_door_sensor_contact
+                  state: "on"
+              chip:
+                type: entity
+                entity: binary_sensor.back_door_sensor_contact
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: more-info
+                double_tap_action:
+                  action: more-info
+                content_info: none
+                icon: mdi:door-open
+                icon_color: red
+                name: Front Door
+            - type: menu
+          alignment: justify
+          card_mod:
+            style:
+              card_mod: null
+              style: |
+                ha-card {
+                  --chip-background: none;
+                  z-index: 2;
+                  position: fixed;
+                  bottom: 0;
+                  padding: 10px;
+                  background: #2C3E50 !important;
+                  margin: 0 !important;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: calc(100%);
+                }
+              mushroom-conditional-chip:nth-child(3):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(9):
+                mushroom-entity-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(6):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-green), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
+              mushroom-conditional-chip:nth-child(7):
+                mushroom-action-chip$: |
+                  ha-state-icon {
+                    animation: ping 2s infinite;
+                    }
+                    @keyframes ping {
+                        0% {box-shadow: 0 0 0 0 rgba(var(--rgb-blue), 0.7);}
+                        70% {box-shadow: 0 0 0 10px transparent;}
+                        100% {box-shadow: 0 0 0 0 transparent;}
+                    }
