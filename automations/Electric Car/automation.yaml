@@ -1,0 +1,59 @@
+alias: "CAR: Car Charging AMPS (Home Only) (v2)"
+description: ""
+mode: single
+triggers:
+  - entity_id: binary_sensor.tessy_charging_2
+    to: "on"
+    trigger: state
+  - entity_id: switch.octopus_energy_a_d39896ec_intelligent_bump_charge
+    to: "on"
+    trigger: state
+conditions:
+  - condition: state
+    entity_id: device_tracker.tessy_location
+    state: home
+actions:
+  - target:
+      entity_id: number.tessy_charge_current
+    data:
+      value: 6
+    action: number.set_value
+  - data:
+      name: Tesla AMPS
+      message: Car is charging - set to 6A (awaiting Octopus/Tessie to update)
+    action: logbook.log
+  - wait_for_trigger:
+      - entity_id: switch.octopus_energy_a_d39896ec_intelligent_bump_charge
+        to: "on"
+        trigger: state
+      - entity_id: binary_sensor.octopus_energy_a_d39896ec_intelligent_dispatching
+        to: "on"
+        trigger: state
+    timeout: "00:15:00"
+    continue_on_timeout: true
+  - choose:
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: switch.octopus_energy_a_d39896ec_intelligent_bump_charge
+                state: "on"
+              - condition: state
+                entity_id: >-
+                  binary_sensor.octopus_energy_a_d39896ec_intelligent_dispatching
+                state: "on"
+        sequence:
+          - target:
+              entity_id: number.tessy_charge_current
+            data:
+              value: 32
+            action: number.set_value
+          - data:
+              name: Tesla AMPS
+              message: Bump charge OR Intelligent Dispatch turned ON - set to 32A
+            action: logbook.log
+    default:
+      - data:
+          name: Tesla AMPS
+          message: Bump/Dispatch never turned ON in 15m timeout — remain at 6A
+        action: logbook.log
