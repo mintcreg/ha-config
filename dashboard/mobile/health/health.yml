@@ -951,6 +951,12 @@ sections:
                   - condition: state
                     entity: sensor.unraid_server_mazmaka_mazmaka_cpu_usage
                     state_not: unknown
+                  - condition: state
+                    entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                    state_not: unavailable
+                  - condition: state
+                    entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                    state_not: unknown
             card:
               type: vertical-stack
               cards:
@@ -1318,9 +1324,17 @@ sections:
                       }
           - type: conditional
             conditions:
+              - condition: or
+                conditions:
+                  - condition: state
+                    entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                    state: unavailable
+                  - condition: state
+                    entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                    state: unknown
               - condition: state
-                entity: sensor.unraid_server_mazmaka_mazmaka_cpu_usage
-                state: unavailable
+                entity: switch.server
+                state_not: "on"
             card:
               type: vertical-stack
               cards:
@@ -1331,6 +1345,9 @@ sections:
 
                     You can use the button below to turn this on and the screen
                     will automatically refresh
+
+
+                    Please allow up to 5 minutes for the server to boot!
                   card_mod:
                     style:
                       mushroom-shape-avatar$: |
@@ -1387,6 +1404,138 @@ sections:
                   icon: mdi:server
                   show_state: true
                   name: Server
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: sensor.unraid_server_mazmaka_mazmaka_cpu_usage
+                state_not: unavailable
+              - condition: state
+                entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                state: unavailable
+              - condition: state
+                entity: sensor.unraid_server_mazmaka_mazmaka_array_disk1_usage
+                state_not: unknown
+              - condition: state
+                entity: sensor.unraid_server_mazmaka_mazmaka_cpu_usage
+                state_not: unknown
+              - condition: state
+                entity: switch.server
+                state: "on"
+            card:
+              type: vertical-stack
+              cards:
+                - type: markdown
+                  content: >-
+                    The server is currently **turned on!** but you need to start
+                    the array before this card will update.
+
+
+                    You can navigate to http://mazmaka/Dashboard to do this.
+                  card_mod:
+                    style:
+                      mushroom-shape-avatar$: |
+                        .picture {
+                          /* Style shadow ring around person avatar */                              
+                          box-shadow: 0px 0px 8px 4px var(--state-person);
+                          margin-right: var(--mush-title-spacing, 12px);
+                          }
+                      .: |
+                        ha-card {
+                          /* Remove default card styling */
+                          --ha-card-background: rgba(var(--rgb-card-background-color), 0.);;
+                          box-shadow: none;
+                          --ha-card-border-width: 0;
+                          /* Increase icon size */
+                          --icon-size: 80px;
+                          /* Center card */
+                          margin: 25px 0px 0px 30px;
+                          width: fit-content;
+                          /* Add padding to bottom of card */
+                          padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                          
+                          /* Make card non-responsive to select and pointer */
+                          user-select: none;
+                          pointer-events: none;
+                          
+                          transition: all 0s;
+                        }
+                        :host {
+                          /* Define Person State colors. Can be added to theme */
+                          --state-person-home: var(--green-color);
+                          --state-person-not-home: var(--red-color);
+                          --state-person-zone: var(--blue-color);
+                          --state-person-unknown: var(--grey-color);
+                          /* Set Person State color */
+                          --state-person:
+                          {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                            var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                          {% else %}
+                            var(--state-person-zone)
+                          {% endif %};
+                          /* Match styling to Mushroom Title */
+                          --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                          --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                          --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                          --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                          --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                          --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                        }
+                - type: custom:expander-card
+                  gap: 0.6em
+                  padding: 1em
+                  clear: true
+                  clear-children: true
+                  title: ""
+                  overlay-margin: 2em
+                  child-padding: 0.5em
+                  button-background: transparent
+                  header-color: "#FF5733"
+                  cards:
+                    - type: vertical-stack
+                      cards:
+                        - show_name: true
+                          show_icon: true
+                          type: button
+                          name: Shutdown Unraid Server
+                          icon: mdi:power
+                          tap_action:
+                            action: call-service
+                            service: shell_command.unraid_powerdown
+                  entities:
+                    - entity: binary_sensor.rt_ac86u_internet
+                      name: Internet Status
+                    - entity: switch.rt_ac86u_openvpn_server_2
+                      secondary_info: none
+                      name: VPN (All Access)
+                  title-card:
+                    type: custom:bubble-card
+                    column_fix: true
+                    card_type: separator
+                    icon: mdi:cog
+                    name: Quick Controls
+                    entity: switch.unraid_server_mazmaka_mazmaka_docker_swag
+                    card_mod:
+                      style: |
+                        .separator-container {
+                          display: inline-flex;
+                          align-items: center;
+                          justify-content: center;
+                          width: 100%;
+                          margin-top: 12px;
+                        }
+                        .separator-container div:last-child {
+                          display: none;
+                        }
+                  card_mod:
+                    style: |
+                      .header {
+                        color: white;  /* Custom header text color */
+                        font-weight: bold;  /* Make the text bold */
+                        font-size: 18px;  /* Adjust font size */
+                      }
+                      .primary.title.svelte-1n379ek {
+                        text-align: center;  /* Center-align the specific div text */
+                      }
       - type: vertical-stack
         cards:
           - type: custom:bubble-card
