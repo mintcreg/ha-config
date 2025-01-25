@@ -18,7 +18,7 @@
 
 ```
 
-## Prerequisites 
+## Notes 
 
-This checks every 7/15/30 days for both TAX & MOT
+This checks every 7/15/30 days for both TAX & MOT and then fires a notification to the relevant person and also performs a logbook write (with logic to understand why actions were taken).
 
