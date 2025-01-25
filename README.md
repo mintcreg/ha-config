@@ -30,12 +30,9 @@
 
 ## Mobile Dashboard
 
-### Dashboard Home
 
-![Dashboard personal](images/screenshots/personal-dashboard.png)
 
-- Device tracker
-- Phone status (location)
+Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile) and open up each folder which will contain screenshots and a demo (where possible) along with the full room view YAML
 
 
 ## Integrations
