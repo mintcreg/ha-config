@@ -1,0 +1,378 @@
+alias: Wheelie Bins
+description: ""
+triggers:
+  - entity_id: binary_sensor.green_bin_tomorrow
+    to: "on"
+    id: green-bin-tomorrow
+    trigger: state
+    alias: Green Bin Tomorrow
+  - entity_id: binary_sensor.green_bin_today
+    to: "on"
+    id: green-bin-today
+    trigger: state
+    alias: Green Bin Today
+  - entity_id: binary_sensor.blue_bin_tomorrow
+    to: "on"
+    id: blue-bin-tomorrow
+    trigger: state
+    alias: Blue Bin Tomorrow
+  - entity_id: binary_sensor.blue_bin_today
+    to: "on"
+    id: blue-bin-today
+    trigger: state
+    alias: Blue Bin Today
+  - trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: blue_bin_out
+    alias: Blue Bin out (action)
+    id: blue-bin-is-out
+  - alias: Blue Bin in(action)
+    trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: blue_bin_back
+    id: blue-bin-is-back
+  - alias: Green Bin out (action)
+    trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: green_bin_out
+    id: green-bin-is-out
+  - alias: Green Bin in(action)
+    trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: green_bin_back
+    id: green-bin-is-back
+  - trigger: time
+    at: "01:00:00"
+    id: time-1am
+    alias: Time Check (reset inputs)
+  - trigger: time
+    at: "17:03:00"
+    id: dev
+    enabled: true
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - blue-bin-tomorrow
+        sequence:
+          - wait_template: >
+              {% set now_time = now() %} {% set target =
+              states('input_datetime.bin_put_out_time') %} {% set target_time =
+              target.split(':') %} {% set target_hour = target_time[0] | int %}
+              {% set target_minute = target_time[1] | int %} {{ now_time.hour >
+              target_hour or (now_time.hour == target_hour and now_time.minute
+              >= target_minute) }}
+            timeout: "24:00:00"
+            continue_on_timeout: false
+          - condition: state
+            entity_id: binary_sensor.blue_bin_tomorrow
+            state: "on"
+            enabled: true
+          - action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:recycle
+              notify_message: ♻️ The blue bin needs to be put out ♻️
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_actions:
+                - action: blue_bin_out
+                  title: It's out
+                - action: cancel
+                  title: Dismiss
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/bin-calendar
+              data_sticky: true
+              notify_title: Wheelie Bins
+      - conditions:
+          - condition: trigger
+            id:
+              - green-bin-tomorrow
+            enabled: true
+        sequence:
+          - wait_template: >
+              {% set now_time = now() %} {% set target =
+              states('input_datetime.bin_put_out_time') %} {% set target_time =
+              target.split(':') %} {% set target_hour = target_time[0] | int %}
+              {% set target_minute = target_time[1] | int %} {{ now_time.hour >
+              target_hour or (now_time.hour == target_hour and now_time.minute
+              >= target_minute) }}
+            timeout: "24:00:00"
+            continue_on_timeout: false
+          - condition: state
+            entity_id: binary_sensor.green_bin_tomorrow
+            state: "on"
+          - action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:trash-can
+              notify_message: 🗑️ The green bin needs to be put out 🗑️
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_actions:
+                - action: green_bin_out
+                  title: It's out
+                - action: cancel
+                  title: Dismiss
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/bin-calendar
+              data_sticky: true
+              notify_title: Wheelie Bins
+      - conditions:
+          - condition: trigger
+            id:
+              - blue-bin-today
+        sequence:
+          - wait_template: >
+              {% set now_time = now() %} {% set target =
+              states('input_datetime.bin_take_in_time') %} {% set target_time =
+              target.split(':') %} {% set target_hour = target_time[0] | int %}
+              {% set target_minute = target_time[1] | int %} {{ now_time.hour >
+              target_hour or (now_time.hour == target_hour and now_time.minute
+              >= target_minute) }}
+            timeout: "24:00:00"
+            continue_on_timeout: false
+          - condition: state
+            entity_id: binary_sensor.blue_bin_today
+            state: "on"
+          - action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:recycle
+              notify_message: ♻ The blue bin needs to be put away ♻
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_actions:
+                - action: blue_bin_back
+                  title: It's out
+                - action: cancel
+                  title: Dismiss
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/bin-calendar
+              data_sticky: true
+              notify_title: Wheelie Bins
+      - conditions:
+          - condition: trigger
+            id:
+              - green-bin-today
+        sequence:
+          - wait_template: >
+              {% set now_time = now() %} {% set target =
+              states('input_datetime.bin_take_in_time') %} {% set target_time =
+              target.split(':') %} {% set target_hour = target_time[0] | int %}
+              {% set target_minute = target_time[1] | int %} {{ now_time.hour >
+              target_hour or (now_time.hour == target_hour and now_time.minute
+              >= target_minute) }}
+            timeout: "24:00:00"
+            continue_on_timeout: false
+          - condition: state
+            entity_id: binary_sensor.green_bin_today
+            state: "on"
+          - action: script.mobile_notifications_template
+            data:
+              notify_devices:
+                - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                - 7d085832ffb6f018f8c1ea890b5378b6
+              data_notification_icon: mdi:recycle
+              notify_message: 🗑️ The green bin needs to be put away 🗑️
+              data_notification_color:
+                - 0
+                - 123
+                - 255
+              data_actions:
+                - action: blue_bin_out
+                  title: It's Back
+                - action: cancel
+                  title: Dismiss
+              data_importance: high
+              data_clickaction_url: /dashboard-mobile/bin-calendar
+              data_sticky: true
+              notify_title: Wheelie Bins
+      - conditions:
+          - condition: trigger
+            id:
+              - blue-bin-is-out
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.blue_bin_out
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.blue_bin_back
+          - condition: template
+            value_template: >-
+              {{ trigger.event.context.user_id ==
+              '97ecc3f245034eaab1b5f28ebd0f72c7' }}
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ trigger.event.context.user_id ==
+                  '97ecc3f245034eaab1b5f28ebd0f72c7' }}
+            then:
+              - action: script.mobile_notifications_template
+                data:
+                  notify_devices:
+                    - 7d085832ffb6f018f8c1ea890b5378b6
+                  data_notification_icon: mdi:recycle
+                  notify_message: Craig's put the blue bin out
+                  data_notification_color:
+                    - 0
+                    - 123
+                    - 255
+                  data_actions: {}
+        alias: Triggered by blue bin being out
+      - conditions:
+          - condition: trigger
+            id:
+              - green-bin-is-out
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.green_bin_out
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.green_bin_back
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ trigger.event.context.user_id ==
+                  '97ecc3f245034eaab1b5f28ebd0f72c7' }}
+            then:
+              - action: script.mobile_notifications_template
+                data:
+                  notify_devices:
+                    - 7d085832ffb6f018f8c1ea890b5378b6
+                  data_notification_icon: mdi:recycle
+                  notify_message: Craig's put the green bin out
+                  data_notification_color:
+                    - 0
+                    - 123
+                    - 255
+                  data_actions: {}
+        alias: Triggered by green bin being out
+      - conditions:
+          - condition: trigger
+            id:
+              - blue-bin-is-back
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.blue_bin_back
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.blue_bin_out
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ trigger.event.context.user_id ==
+                  '97ecc3f245034eaab1b5f28ebd0f72c7' }}
+            then:
+              - action: script.mobile_notifications_template
+                data:
+                  notify_devices:
+                    - 7d085832ffb6f018f8c1ea890b5378b6
+                  data_notification_icon: mdi:recycle
+                  notify_message: Craig's brought the blue bin back in
+                  data_notification_color:
+                    - 0
+                    - 123
+                    - 255
+                  data_actions: {}
+        alias: Triggered by blue bin being put back
+      - conditions:
+          - condition: trigger
+            id:
+              - green-bin-is-back
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.green_bin_back
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.green_bin_out
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ trigger.event.context.user_id ==
+                  '97ecc3f245034eaab1b5f28ebd0f72c7' }}
+            then:
+              - action: script.mobile_notifications_template
+                data:
+                  notify_devices:
+                    - 7d085832ffb6f018f8c1ea890b5378b6
+                  data_notification_icon: mdi:recycle
+                  notify_message: Craig's brought the green bin back in
+                  data_notification_color:
+                    - 0
+                    - 123
+                    - 255
+                  data_actions: {}
+        alias: Triggered by green bin being put back
+      - conditions:
+          - condition: trigger
+            id:
+              - time-1am
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: binary_sensor.blue_bin_today
+                state: "off"
+              - condition: state
+                entity_id: binary_sensor.green_bin_tomorrow
+                state: "off"
+              - condition: state
+                entity_id: binary_sensor.green_bin_today
+                state: "off"
+              - condition: state
+                entity_id: binary_sensor.blue_bin_tomorrow
+                state: "off"
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.green_bin_back
+                - input_boolean.blue_bin_back
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.blue_bin_out
+                - input_boolean.green_bin_out
+    default: []
+mode: parallel
