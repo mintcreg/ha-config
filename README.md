@@ -188,6 +188,11 @@
 
 ## Devices
 
+<details>
+  <summary>Show full list</summary>
+  
+<br>
+<h2 align="center">Primary Devices</h2>
 <table align="center" border="0" width="100%">
   <thead>
     <tr>
@@ -237,6 +242,19 @@
       </td>
       <td>x2</td>
     </tr>
+  </tbody>
+</table>
+
+<h2 align="center">Zigbee Devices</h2>
+<table align="center" border="0" width="100%">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Use</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td>
         <img src="images/devices/ikea-vallhorn-motion-sensor.jpeg" alt="drawing" width="120" />
@@ -330,6 +348,7 @@
   </tbody>
 </table>
 
+</details>
 
 ## Automations
 
