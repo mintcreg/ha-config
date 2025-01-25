@@ -12,7 +12,7 @@ sections:
             card_type: separator
             icon: mdi:list-status
             name: Health
-            entity: person.craig_archbold
+            entity: person.craig
             card_mod:
               style: |
                 .separator-container {
@@ -231,7 +231,7 @@ sections:
                 card_type: separator
                 icon: mdi:battery
                 name: Batteries
-                entity: person.craig_archbold
+                entity: person.craig
                 card_mod:
                   style: |
                     .separator-container {
@@ -404,7 +404,7 @@ sections:
             card_type: separator
             icon: mdi:router-network-wireless
             name: Router Monitor
-            entity: person.craig_archbold
+            entity: person.craig
             card_mod:
               style: |
                 .separator-container {
@@ -617,7 +617,7 @@ sections:
             card_type: separator
             icon: phu:desktop-computer
             name: PC Monitor
-            entity: person.craig_archbold
+            entity: person.craig
             card_mod:
               style: |
                 .separator-container {
@@ -928,7 +928,7 @@ sections:
             card_type: separator
             icon: mdi:server-network
             name: Server Monitor
-            entity: person.craig_archbold
+            entity: person.craig
             card_mod:
               style: |
                 .separator-container {
@@ -1427,7 +1427,7 @@ sections:
             card_type: separator
             icon: mdi:raspberry-pi
             name: HomeAssistant Monitor
-            entity: person.craig_archbold
+            entity: person.craig
             card_mod:
               style: |
                 .separator-container {
@@ -1576,7 +1576,7 @@ sections:
                 name: Front Door
             - type: spacer
             - type: entity
-              entity: person.craig_archbold
+              entity: person.craig
               tap_action:
                 action: navigate
                 navigation_path: /dashboard-mobile/0
@@ -1587,7 +1587,7 @@ sections:
               content_info: none
             - type: spacer
             - type: entity
-              entity: person.craig_archbold
+              entity: person.craig
               tap_action:
                 action: navigate
                 navigation_path: /dashboard-mobile/calendar
