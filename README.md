@@ -196,6 +196,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
   <thead>
     <tr>
       <th>Device</th>
+      <th>Name</th>
       <th>Use</th>
       <th>Quantity</th>
     </tr>
@@ -204,51 +205,45 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/rpi.png" alt="drawing" width="120" />
-        <p>RPI 4 (8gb)</p>
       </td>
-      <td>
-        <p>Directly running HASSIO OS</p>
-      </td>
+      <td>RPI 4 (8gb)</td>
+      <td>Directly running HASSIO OS</td>
       <td>x1</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/RT-AC86U.jpg" alt="drawing" width="120" />
-        <p>ASUS RT-AC86U</p>
       </td>
-      <td>
-        <p>Router</p>
-      </td>
+      <td>ASUS RT-AC86U</td>
+      <td>Router</td>
       <td>x1</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/SONOFF-Zigbee-plus-e.jpg" alt="drawing" width="120" />
-        <p>SONOFF-Zigbee Plus-E</p>
       </td>
-      <td>
-        <p>Zigbee co-ordinator</p>
-      </td>
+      <td>SONOFF-Zigbee Plus-E</td>
+      <td>Zigbee co-ordinator</td>
       <td>x1</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/google-mini.jpg" alt="drawing" width="120" />
-        <p>Google Home Mini</p>
       </td>
-      <td>
-        <p>Voice Assistant</p>
-      </td>
+      <td>Google Home Mini</td>
+      <td>Voice Assistant</td>
       <td>x2</td>
     </tr>
   </tbody>
 </table>
+
 
 <h2 align="center">Zigbee Devices</h2>
 <table align="center" border="0" width="100%">
   <thead>
     <tr>
       <th>Device</th>
+      <th>Name</th>
       <th>Use</th>
       <th>Quantity</th>
     </tr>
@@ -257,95 +252,115 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
     <tr>
       <td>
         <img src="images/devices/ikea-vallhorn-motion-sensor.jpeg" alt="drawing" width="120" />
-        <p>Ikea Vallhorn Motion Sensor</p>
       </td>
       <td>
-        <p>Capture motion</p>
+        Ikea Vallhorn Motion Sensor
+      </td>
+      <td>
+        Capture motion
       </td>
       <td>x4</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/sonoff-snzb-02.jpeg" alt="drawing" width="120" />
-        <p>Sonoff SNZB-02</p>
       </td>
       <td>
-        <p>Temperature Sensor</p>
+        Sonoff SNZB-02
+      </td>
+      <td>
+        Temperature Sensor
       </td>
       <td>x2</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/sonoff-snzb-04.jpeg" alt="drawing" width="120" />
-        <p>Sonoff SNZB-02</p>
       </td>
       <td>
-        <p>Open/close sensor</p>
+        Sonoff SNZB-02
+      </td>
+      <td>
+        Open/close sensor
       </td>
       <td>x3</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-TT001ZAV20.png" alt="drawing" width="120" />
-        <p>TUYA - TS0201</p>
       </td>
       <td>
-        <p>Fridge temperature sensor</p>
+        TUYA - TS0201
+      </td>
+      <td>
+        Fridge temperature sensor
       </td>
       <td>x1</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-TS0011.jpeg" alt="drawing" width="120" />
-        <p>Tuya - TS0011</p>
       </td>
       <td>
-        <p>Light switch</p>
+        Tuya - TS0011
+      </td>
+      <td>
+        Light switch
       </td>
       <td>x9</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-BSD29_1.jpeg" alt="drawing" width="120" />
-        <p>Tuya BSD29_1</p>
       </td>
       <td>
-        <p>Switch / Power meter</p>
+        Tuya BSD29_1
+      </td>
+      <td>
+        Switch / Power meter
       </td>
       <td>x1</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-WSD500A.jpeg" alt="drawing" width="120" />
-        <p>Tuya - WSD500A</p>
       </td>
       <td>
-        <p>Temperature Sensor</p>
+        Tuya - WSD500A
+      </td>
+      <td>
+        Temperature Sensor
       </td>
       <td>x3</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-ZG-227Z.png" alt="drawing" width="120" />
-        <p>Tuya - ZG-227Z</p>
       </td>
       <td>
-        <p>Temperature Sensor</p>
+        Tuya - ZG-227Z
+      </td>
+      <td>
+        Temperature Sensor
       </td>
       <td>x5</td>
     </tr>
     <tr>
       <td>
         <img src="images/devices/tuya-ZY-M100-24GV3.png" alt="drawing" width="120" />
-        <p>Tuya - ZY-M100-24GV3</p>
       </td>
       <td>
-        <p>Presence sensor</p>
+        Tuya - ZY-M100-24GV3
+      </td>
+      <td>
+        Presence sensor
       </td>
       <td>x2</td>
     </tr>
   </tbody>
 </table>
+
+
 
 </details>
 
