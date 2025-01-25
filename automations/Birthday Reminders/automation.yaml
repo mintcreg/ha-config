@@ -1,0 +1,376 @@
+alias: Birthday Notifications
+description: ""
+triggers:
+  - event: start
+    offset: "-182:0:0"
+    entity_id: calendar.birthdays
+    trigger: calendar
+    id: 7days
+    alias: 7 Day Reminder
+  - event: start
+    offset: "-14:0:0"
+    entity_id: calendar.birthdays
+    trigger: calendar
+    id: 1day
+    alias: 1 Day Reminder
+  - event: start
+    offset: "-705:0:0"
+    entity_id: calendar.birthdays
+    trigger: calendar
+    id: 30day
+    alias: 30 Day Reminder
+  - alias: dev
+    event: start
+    offset: "-5:22:30"
+    entity_id: calendar.birthdays
+    trigger: calendar
+    id: dev
+    enabled: false
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - 1day
+              - dev
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Both Craig and Angela reminders active - sending to both
+                        Craig & Angela
+                    action: logbook.log
+                  - alias: Notify Both
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+                      data_actions:
+                        - action: URI
+                          title: Open Calendar
+                          uri: /dashboard-mobile/calendar
+                        - action: cancel
+                          title: Dismiss
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Angela reminder active and Craig's reminder is off -
+                        sending to Angela only
+                    action: logbook.log
+                  - alias: Notify Angela
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+                      data_actions:
+                        - action: URI
+                          title: Open Calendar
+                          uri: /dashboard-mobile/calendar
+                        - action: cancel
+                          title: Dismiss
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Craig reminder active and Angela's reminder is off -
+                        sending to Craig only
+                    action: logbook.log
+                  - alias: Notify Craig
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+                      data_actions:
+                        - action: URI
+                          title: Open Calendar
+                          uri: /dashboard-mobile/calendar
+                        - action: cancel
+                          title: Dismiss
+      - conditions:
+          - condition: trigger
+            id: 7days
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Both Craig and Angela reminders active - sending to both
+                        Craig & Angela
+                    action: logbook.log
+                  - alias: Notify Both
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Angela reminder active and Craig's reminder is off -
+                        sending to Angela only
+                    action: logbook.log
+                  - alias: Notify Angela
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Craig reminder active and Angela's reminder is off -
+                        sending to Craig only
+                    action: logbook.log
+                  - alias: Notify Craig
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+      - conditions:
+          - condition: trigger
+            id: 30day
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Both Craig and Angela reminders active - sending to both
+                        Craig & Angela
+                    action: logbook.log
+                  - alias: Notify Both
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Angela reminder active and Craig's reminder is off -
+                        sending to Angela only
+                    action: logbook.log
+                  - alias: Notify Angela
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - 7d085832ffb6f018f8c1ea890b5378b6
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_craig
+                        state: "on"
+                      - condition: state
+                        entity_id: input_boolean.birthday_reminder_angela
+                        state: "off"
+                sequence:
+                  - data:
+                      name: Birthday Automation
+                      message: >-
+                        Craig reminder active and Angela's reminder is off -
+                        sending to Craig only
+                    action: logbook.log
+                  - alias: Notify Craig
+                    action: script.mobile_notifications_template
+                    data:
+                      notify_devices:
+                        - ed70cb33e8fa2bf0b9e6cf9b1cd3fce4
+                      data_notification_icon: mdi:cake-variant-outline
+                      notify_message: >-
+                        It's {{ trigger.calendar_event.summary }} on {{
+                        (trigger.calendar_event.start |
+                        as_datetime).strftime('%d/%m/%Y') }}
+                      data_notification_color:
+                        - 0
+                        - 123
+                        - 255
+                      data_importance: high
+                      data_clickaction_url: /dashboard-mobile/calendar
+                      data_sticky: true
+                      notify_title: MazCasa - Birthday Reminder
+mode: single
