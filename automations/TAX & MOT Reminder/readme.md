@@ -7,7 +7,6 @@
 
 {{ states('sensor.dvla_REGPLATE_motexpirydate') | regex_replace('(\\d{4})-(\\d{2})-(\\d{2})', '\\3/\\2/\\1') }}
 
-
 ```
 
 
@@ -16,7 +15,6 @@
 ```yaml
 
 {{ states('sensor.REGPLATE_taxduedate') | regex_replace('(\\d{4})-(\\d{2})-(\\d{2})', '\\3/\\2/\\1') }}
-
 
 ```
 
