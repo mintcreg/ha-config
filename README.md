@@ -351,9 +351,10 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
 
 ## Automations
 
-- [Birthday Reminders](https://github.com/mintcreg/ha-config/tree/main/automations/Birthday%20Reminders)
-- [TAX & MOT Reminder](https://github.com/mintcreg/ha-config/tree/main/automations/TAX%20%26%20MOT%20Reminder)
-- [Wheelie Bins/Trash](https://github.com/mintcreg/ha-config/tree/main/automations/Wheelie%20Bins)
+- [Birthday Reminders](https://github.com/mintcreg/ha-config/tree/main/automations/Birthday%20Reminders) - Reminders for upcoming birthdays at defined intervals (using local calendar)
+- [TAX & MOT Reminder](https://github.com/mintcreg/ha-config/tree/main/automations/TAX%20%26%20MOT%20Reminder) - Reminders for car TAX & MOT at defined intervals
+- [Wheelie Bins/Trash](https://github.com/mintcreg/ha-config/tree/main/automations/Wheelie%20Bins) - Reminders for trash/wheelie bins being put out and taking back in (with virtual trackers)
+- [Electric Car](https://github.com/mintcreg/ha-config/tree/main/automations/Electric%20Car) - Save a little bit of money whilst charging with Octopus Energy and an electric car
 
 
 ## ToDo list
