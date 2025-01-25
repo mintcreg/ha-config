@@ -34,6 +34,7 @@
 
 Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile) and open up each folder which will contain screenshots and a demo (where possible) along with the full room view YAML
 
+![Slideshow](/images/screenshots/dashboard/overall.gif)
 
 ## Integrations
 
