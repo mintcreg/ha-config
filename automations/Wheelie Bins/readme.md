@@ -5,7 +5,7 @@ This automation manages reminders and tracking for putting out and bringing in w
 
 ## Prerequisites 
 
- [hacs_waste_collection_schedule](https://github.com/mampfes/hacs_waste_collection_schedule) *OR* full day calendar entries can also be used
+ You need to have [hacs_waste_collection_schedule](https://github.com/mampfes/hacs_waste_collection_schedule) *OR* full day calendar entries can also be used
 
 #### Helpers Needed
 1. Input Booleans:
