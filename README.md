@@ -20,8 +20,7 @@
 
 ## Table of Contents
 
-- [Screenshots](#screenshots)
-- [Software](#software)
+- [Mobile Dashboard](#mobile-dashboard)
 - [Integrations](#integrations)
 - [Lovelace Cards](#lovelace-cards)
 - [Addons](#addons)
@@ -29,7 +28,7 @@
 - [Automations](#automations)
 - [ToDo list](#todo-list)
 
-## Screenshots
+## Mobile Dashboard
 
 ### Dashboard Home
 
@@ -38,10 +37,6 @@
 - Device tracker
 - Phone status (location)
 
-## Software
-
-- [HomeAssistant](https://www.home-assistant.io/) MQTT server to communicate with devices
-- [MariaDB](https://mariadb.org/) database to save all information
 
 ## Integrations
 
