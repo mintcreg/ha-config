@@ -350,7 +350,8 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
 
 ## Automations
 
-### Coming soon
+- [Birthday Reminders](https://github.com/mintcreg/ha-config/tree/main/automations/Birthday%20Reminders)
+- [TAX & MOT Reminder](https://github.com/mintcreg/ha-config/tree/main/automations/TAX%20%26%20MOT%20Reminder)
 
 
 ## ToDo list
