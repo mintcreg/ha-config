@@ -375,6 +375,7 @@ Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcre
 - [TAX & MOT Reminder](https://github.com/mintcreg/ha-config/tree/main/automations/TAX%20%26%20MOT%20Reminder) - Reminders for car TAX & MOT at defined intervals
 - [Wheelie Bins/Trash](https://github.com/mintcreg/ha-config/tree/main/automations/Wheelie%20Bins) - Reminders for trash/wheelie bins being put out and taking back in (with virtual trackers)
 - [Electric Car](https://github.com/mintcreg/ha-config/tree/main/automations/Electric%20Car) - Save a little bit of money whilst charging with Octopus Energy and an electric car
+- [Shopping List](https://github.com/mintcreg/ha-config/tree/main/automations/shopping-list) - Notification agent to alert if items are on the shopping list and you are in a store (added functions to clear the completed items and alert other people of your prescence at the shops)
 
 
 ## ToDo list
