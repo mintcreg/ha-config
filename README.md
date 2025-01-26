@@ -34,6 +34,11 @@
 
 Please visit the dashboard section [Mobile Dashboard](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile) and open up each folder which will contain screenshots and a demo (where possible) along with the full room view YAML
 
+- [Home Page](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile/home) - A sleek homepage showing all rooms with bubble popup cards for sections and swiper sliders.
+- [Birthday Calendar](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile/calendar) - A page to display upcoming birthday's with a markdown card, calendar and option to add a new calendar entry.
+- [Health/Network Status](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile/health) - A health status page to monitor a Windows PC / Unraid Server / RPI4 & Router.
+- [Profile Page](https://github.com/mintcreg/ha-config/tree/main/dashboard/mobile/profile%201) - A profile page to show all specific user settings (input helpers used in automations).
+
 <details>
   <summary>Screenshots</summary>
   
