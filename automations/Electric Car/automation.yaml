@@ -1,6 +1,5 @@
 alias: "CAR: Car Charging AMPS (Home Only) (v2)"
 description: ""
-mode: single
 triggers:
   - entity_id: binary_sensor.tessy_charging_2
     to: "on"
@@ -57,3 +56,4 @@ actions:
           name: Tesla AMPS
           message: Bump/Dispatch never turned ON in 15m timeout — remain at 6A
         action: logbook.log
+mode: single
