@@ -72,3 +72,8 @@ card_mod:
 </details>
 
 
+## Prerequisites
+<p></p>
+You need to define zones in HomeAssistant and ensure they use the ```mdi:store``` tag as the automation automatically pulls any zones with this mdi tag.</p>
+- 
+
