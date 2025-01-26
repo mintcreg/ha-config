@@ -1,0 +1,150 @@
+alias: Shopping List Automation
+description: ""
+triggers:
+  - value_template: |-
+      {% set ns = namespace(shop_zones=[]) %}
+            {% for zone in states.zone %}
+              {% if zone.attributes.icon == 'mdi:store' %}
+                {% set ns.shop_zones = ns.shop_zones + [zone.name] %}
+              {% endif %}
+            {% endfor %}
+            {{ states('person.craig') in ns.shop_zones }}
+    id: craig-shops
+    trigger: template
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  - value_template: |-
+      {% set ns = namespace(shop_zones=[]) %}
+            {% for zone in states.zone %}
+              {% if zone.attributes.icon == 'mdi:store' %}
+                {% set ns.shop_zones = ns.shop_zones + [zone.name] %}
+              {% endif %}
+            {% endfor %}
+            {{ states('person.angela') in ns.shop_zones }}
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+    id: angela-shops
+    trigger: template
+  - trigger: time
+    at: "01:00:00"
+    id: 1am
+conditions:
+  - condition: and
+    conditions:
+      - alias: Check the shopping list has at least 1 item
+        condition: template
+        value_template: "{{ (states('todo.shopping_list') | int > 0) }}"
+      - condition: template
+        value_template: >-
+          {{ states('input_datetime.shopping_last_ran') !=
+          now().date().isoformat() }}
+        enabled: false
+        alias: (NOT USED) - Check if the script was last ran today
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: craig-shops
+        sequence:
+          - variables:
+              person_name: "{{ state_attr('person.craig', 'friendly_name') }}"
+              zone_name: "{{ states('person.craig') }}"
+          - condition: state
+            entity_id: input_boolean.shopping_list_craig
+            state: "on"
+            enabled: true
+          - target:
+              entity_id: script.1708106825414
+            action: script.turn_on
+            data: {}
+            enabled: true
+          - condition: state
+            entity_id: input_boolean.shop_alert_angela
+            state: "on"
+            enabled: true
+          - condition: template
+            value_template: >
+              {%- set today = now().date() %}
+
+              {%- set on_time =
+              states('input_datetime.angela_shop_notify_on_time') %}
+
+              {%- set off_time =
+              states('input_datetime.angela_shop_notify_off_time') %}
+
+              {%- if on_time and off_time -%}
+                {%- set on_datetime = today | string + ' ' + on_time %}
+                {%- set off_datetime = today | string + ' ' + off_time %}
+                {%- set on = on_datetime | as_datetime | as_local %}
+                {%- set off = off_datetime | as_datetime | as_local %}
+                {{ now() >= on and now() < off }}
+              {%- else -%}
+                false
+              {%- endif -%}
+          - data:
+              title: 🏪 Shopping Notification 🏪
+              message: "{{ person_name }}'s at {{ zone_name }}, do you want anything?"
+            action: notify.angelachat
+            enabled: true
+      - conditions:
+          - condition: trigger
+            id: angela-shops
+        sequence:
+          - variables:
+              person_name: "{{ state_attr('person.angela', 'friendly_name') }}"
+              zone_name: "{{ states('person.angela') }}"
+          - condition: template
+            value_template: >
+              {%- set today = now().date() %}
+
+              {%- set on_time =
+              states('input_datetime.craig_shop_notify_on_time') %}
+
+              {%- set off_time =
+              states('input_datetime.craig_shop_notify_off_time') %}
+
+              {%- if on_time and off_time -%}
+                {%- set on_datetime = today | string + ' ' + on_time %}
+                {%- set off_datetime = today | string + ' ' + off_time %}
+                {%- set on = on_datetime | as_datetime | as_local %}
+                {%- set off = off_datetime | as_datetime | as_local %}
+                {{ now() >= on and now() < off }}
+              {%- else -%}
+                false
+              {%- endif -%}
+          - condition: state
+            entity_id: input_boolean.shopping_list_angela
+            state: "on"
+          - target:
+              entity_id: script.shopping_list_notification_angela
+            action: script.turn_on
+            data: {}
+          - condition: state
+            entity_id: input_boolean.shop_alert_craig
+            state: "on"
+          - data:
+              title: 🏪 Shopping Notification 🏪
+              message: "{{ person_name }}'s at {{ zone_name }}, do you want anything?"
+            action: notify.craigchat
+            enabled: true
+      - conditions:
+          - condition: trigger
+            id:
+              - 1am
+        sequence:
+          - action: todo.remove_completed_items
+            metadata: {}
+            data: {}
+            target:
+              entity_id: todo.shopping_list
+          - action: logbook.log
+            metadata: {}
+            data:
+              entity_id: todo.shopping_list
+              message: has been cleared
+              name: "Shopping List "
+mode: single
