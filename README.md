@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/mintcreg/ha-config?style=plasticr"/>
+  <img alt="Last Commit" src="https://img.shields.io/github/last-commit/mintcreg/ha-config?style=plasticr&cacheBust=true"/>
   <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/mintcreg/ha-config"/>
   <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2025"/>
 </p>
